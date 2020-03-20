@@ -1,0 +1,19 @@
+input[type=text],
+select {
+    width: 50%;
+    padding: 14px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-left: 15px;
+}
+
+div .container{
+       margin-top: 30px;
+}
+
+.btn {
+    margin-left: 15px;
+}

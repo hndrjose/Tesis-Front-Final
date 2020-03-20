@@ -1,0 +1,115 @@
+<!-- <style>
+    .menu {
+        background-color: rgb(102, 119, 119);
+        color: white;
+        padding: 0px;
+        position: 20px;
+    }
+</style> -->
+
+
+<!-- <header class="topbar">
+
+    <div class="row-3" id="login">
+        <div>
+            <label *ngIf="role == 'USER'"> | <a routerLink="/perfil"> <i class="fa fa-cog" aria-hidden="true"></i> Perfil</a>  </label>
+            <label *ngIf="role == 'PROV'"> | <a routerLink="/perfilpro"> <i class="fa fa-cog" aria-hidden="true"></i> Perfil</a>  </label>
+            <label> | <a (click)="usuarioService.logout()"> <i class="fa fa-power-off" aria-hidden="true"></i> Cerrar Cesion </a> | </label>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
+        <a class="navbar-brand" routerLink="/dasboard">ServiTodo</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+              <form (ngSubmit)="onkeypress(input.value)" class="form-inline my-2 my-lg-0">
+                <input #input (keyup.enter)="onkeypress(input.value)" class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+            </form>
+
+            <div class="container">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    Dropdown button
+                  </button>
+                    <div class="dropdown-menu">
+                        <h5 class="dropdown-header">Dropdown header</h5>
+                        <a class="dropdown-item" href="#">Link 1</a>
+                        <a class="dropdown-item" href="#">Link 2</a>
+                        <a class="dropdown-item" href="#">Link 3</a>
+                        <h5 class="dropdown-header">Dropdown header</h5>
+                        <a class="dropdown-item" href="#">Another link</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+</header> -->
+
+
+<!--===================
+        Header
+        =======================-->
+
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <div class="container">
+        <img src="./assets/img/servitodo.png" class="img-10  pointer" width="160" height="30">
+        <!-- <a class="navbar-brand" href="index.html">Simple Ecommerce</a> -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
+            <!-- <ul class="navbar-nav m-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="category.html">Categories <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="product.html">Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="cart.html">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+            </ul> -->
+
+            <form class="form-inline my-2 my-lg-0 navbar-right">
+
+                <div class="p-3 mr-0">
+                    <input *ngIf="role == 'USER'" #input (keyup.enter)="onkeypress(input.value)" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Search...">
+                    <div class="badge p-3 m-0" *ngIf="role == 'USER'">
+                        <button type="button" class="btn btn-secondary btn-number">
+                             <i class="fa fa-search"></i>
+                            </button>
+                    </div>
+                </div>
+                <!-- <a class="btn btn-success btn-sm ml-3" href="cart.html">
+                    <i class="fa fa-shopping-cart"></i> Cart
+                    <span class="badge badge-light">3</span>
+                </a> -->
+                <div class="dropdown">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-user" aria-hidden="true"></i> {{usuario[0].user}}
+                  </button>
+                    <div class="dropdown-menu">
+                        <h3 class="dropdown-header center"> </h3>
+                        <label *ngIf="role == 'USER'"><a routerLink="/perfil" class="dropdown-item"> <i class="fa fa-cog" aria-hidden="true"></i> Mi Cuenta </a>  </label>
+                        <label *ngIf="role == 'PROV'"><a routerLink="/perfilpro" class="dropdown-item"> <i class="fa fa-cog" aria-hidden="true"></i> Mi Cuenta </a>  </label>
+                        <!-- <a class="dropdown-item" href="#">Link 1</a>
+                        <a class="dropdown-item" href="#">Link 2</a>
+                        <a class="dropdown-item" href="#">Link 3</a> -->
+                        <h5 class="dropdown-header">-------------</h5>
+                        <a class="dropdown-item" (click)="usuarioService.logout()"><i class="fa fa-power-off"></i> Cerrar Sesion </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,249 @@
+<!-- <div class="container d-flex align-items-center flex-column">
+    <img class="masthead-avatar mb-5" src="./assets/img/trabajador.jpg" alt="" width="200" height="200">
+
+ 
+    <h1 class="masthead-heading text-uppercase mb-0">TODO LO QUE BUSCAS ESTA AQUI</h1>
+    <br>
+    <h2> </h2>
+
+    <div class="divider-custom divider-light">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+            <i class="fas fa-star"></i>
+        </div>
+        <div class="divider-custom-line"></div>
+    </div>
+
+
+    <p class="masthead-subheading font-weight-light mb-0">Graphic Artist - Web Designer - Illustrator</p>
+</div> -->
+
+<div class="container d-flex align-items-center flex-column">
+    <div class="row ">
+
+        <div class="tab-content col-md-6 ">
+            <div role="tabpanel " class="tab-pane profile-pane active " id="profile ">
+                <div>
+                    <div>
+                        <div class="header">
+                            <h5>Informacion de Perfil</h5>
+                        </div>
+                        <div class="content ">
+                            <div class="row par-flex">
+                                <img *ngIf="!imagenTemp" [src]="usuario[0].img | imagen" class="w150" width="120" height="120">
+                                <img *ngIf="imagenTemp" [src]="imagenTemp" class="w150">
+                                <div class="col-sm-8 ">
+                                    <h6>Nombre: {{usuario[0].nombre}}</h6>
+                                    <h6>Ocupacion: {{usuario[0].vocacion}}</h6>
+                                </div>
+                            </div>
+                            <div class="row par-flex">
+                                <h5 class="col-sm-3 col-sm-offset-1 col ">Saldo Actual</h5>
+                                <h5 class="col-sm-4 col ">Trabajos Realizados</h5>
+
+                                <h4 class="col-sm-10 col-sm-offset-1 title ">Supera tus Metas</h4>
+                                <div id="supportedCauses " class="col-sm-10 col-sm-offset-1 ">
+                                    <div id="pane1 " class="cause-info ">
+                                        <p>Escalarás posiciones mientras mejor sea tu desempeño. Gana puntos mejora tu perfil, obtén beneficios y llega a más y mejores clientes.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="header">
+                                <h5>Inforacion de Tu Cuenta</h5>
+                            </div>
+                            <div class="content ">
+                                <div class="row par-flex">
+
+                                    <div class="col-md-8">
+
+                                        <h4>Tu Nivel</h4>
+
+                                        <h6>Puntuacion: {{ valor.puntuacion }} </h6>
+
+                                        <h6>Trabajos Realizados: {{ pedido }} </h6>
+                                        <div class="progress mb-4" style="height: 6px;">
+                                            <div class="progress-bar bg-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" ng-style="{width: (valor +'%')}"></div>
+                                        </div>
+
+                                        <form>
+                                            <p class="clasificacion">
+                                                <input id="radio1" type="radio" name="estrellas" value="5">
+                                                <!--
+                                              --><label for="radio1">★</label>
+                                                <!--
+                                              --><input id="radio2" type="radio" name="estrellas" value="4">
+                                                <!--
+                                              --><label for="radio2">★</label>
+                                                <!--
+                                              --><input id="radio3" type="radio" name="estrellas" value="3">
+                                                <!--
+                                              --><label for="radio3">★</label>
+                                                <!--
+                                              --><input id="radio4" type="radio" name="estrellas" value="2">
+                                                <!--
+                                              --><label for="radio4">★</label>
+                                                <!--
+                                              --><input id="radio5" type="radio" name="estrellas" value="1">
+                                                <!--
+                                              --><label for="radio5">★</label>
+                                            </p>
+                                        </form>
+
+                                        <!-- <div class="col-sm-5 col-sm-offset-4 search-bar ">
+                                            <h3>Donation Reciepts</h3>
+                                            <input type="text ">
+                                            <span class="input-group-btn ">
+                                            <button class="btn btn-default "><span class="glyphicon glyphicon-search "></span></button>
+                                            </span>
+                                        </div> -->
+                                    </div>
+
+
+                                    <h3 class="col-sm-10 col-sm-offset-1 title ">Ingresos</h3>
+                                    <div class="col-sm-4 col-sm-offset-1 membership-info ">
+                                        <h5>Total Obtenido</h5>
+                                    </div>
+                                    <div class="col-sm-6 ">
+                                        <h5>{{ racaudado }}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel " class="tab-pane " id="statistics ">
+                    Estadisticas
+                </div>
+                <div role="tabpanel " class="tab-pane " id="settings ">
+                    Configuracion
+                </div>
+                <!-- <div role="tabpanel " class="tab-pane help-pane " id="help ">
+             
+                    <div class="jumbotron jumbotron-sm ">
+                        <div class="container ">
+                            <div class="row ">
+                                <div class="col-sm-12 col-lg-12 ">
+                                    <h1 class="h1 ">Contact us <small>Feel free to contact us</small></h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container ">
+                        <div class="row ">
+                            <div class="col-md-8 ">
+                                <div class="well well-sm ">
+                                    <form>
+                                        <div class="row ">
+                                            <div class="col-md-6 ">
+                                                <div class="form-group ">
+                                                    <label for="name ">Company Name</label>
+                                                    <input type="text " class="form-control " id="name " placeholder="Enter name " required="required " />
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label for="email ">Email Address</label>
+                                                    <div class="input-group ">
+                                                        <span class="input-group-addon ">
+                                                        <span class="glyphicon glyphicon-envelope "></span>
+                                                        </span>
+                                                        <input type="email " class="form-control " id="email " placeholder="Enter email " required="required " />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label for="subject ">Subject</label>
+                                                    <select id="subject " name="subject " class="form-control " required="required ">
+                                                    <option value="na " selected=" ">Choose One:</option>
+                                                    <option value="service ">General Customer Service</option>
+                                                    <option value="suggestions ">Suggestions</option>
+                                                    <option value="product ">Product Support</option>
+                                                </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 ">
+                                                <div class="form-group ">
+                                                    <label for="name ">Message</label>
+                                                    <textarea name="message " id="message " class="form-control " rows="9 " cols="25 " required="required " placeholder="Message "></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 ">
+                                                <button type="submit " class="btn btn-primary pull-right " id="btnContactUs ">Send Message</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-4 ">
+                                <form>
+                                    <legend><span class="glyphicon glyphicon-globe "></span>Our office</legend>
+                                    <address>
+                                    <strong>Givingest</strong><br>
+                                    795 Folsom Ave, Suite 600<br>
+                                    San Francisco, CA 94107<br>
+                                    <abbr title="Phone ">P:</abbr>
+                                    (123) 456-7890
+                                </address>
+                                    <address>
+                                    <strong>Full Name</strong><br>
+                                    <a href="mailto:# ">first.last@example.com</a>
+                                </address>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function() {
+        var toggleFunction;
+        $('.toggle-handle').click(toggleFunction = function() {
+            var area = $('#' + $(this).attr('data-area'));
+            if (area.hasClass('expanded')) {
+                area.removeClass('expanded');
+            } else {
+                area.addClass('expanded');
+            }
+            $(this).blur();
+            return false;
+        });
+
+        $('#supportedCauses').append(
+            $(document.createElement('div')).attr('id', 'pane4').addClass('cause-info').append(
+                $(document.createElement('div')).append(
+                    $(document.createElement('img')).attr('src', 'http://lorempixel.com/420/420/people'),
+                    $(document.createElement('div')).append(
+                        $(document.createElement('h4')).text('[Name]'),
+                        $(document.createElement('h4')).text('[Cause]')
+                    ),
+                    $(document.createElement('div')).append(
+                        $(document.createElement('h4')).text('[X] Votes')
+                    )
+                ),
+                $(document.createElement('div')).append(
+                    $(document.createElement('h4')).text('About:'),
+                    $(document.createElement('div')).append(
+                        $(document.createElement('p')).text(
+                            'Nam ex ullum assum apeirian, facilisi splendide quo ex. Sea et nonumy accusata, in utinam vocent facilis vix. \
+                        Cu vix eripuit temporibus mediocritatem, denique theophrastus ne mel, et graecis maiorum mediocritatem per. \
+                        Magna tacimates sed eu, sit no graeco latine referrentur. Id sed assum quaerendum, apeirian erroribus ut his. Ex mei mazim minimum.'
+                        ),
+                        $(document.createElement('h5')).html('More at <a>[Website]</a>')
+                    ),
+                    $(document.createElement('button')).addClass('btn btn-primary pull-right').text('Give')
+                ),
+                $(document.createElement('div')).append(
+                    $(document.createElement('h2')).append(
+                        $(document.createElement('a')).append(
+                            $(document.createElement('span')).addClass('glyphicon glyphicon-chevron-down')
+                        ).attr('href', '#pane4').attr('data-area', 'pane4').click(toggleFunction)
+                    )
+                )
+            )
+        );
+    });
+</script>

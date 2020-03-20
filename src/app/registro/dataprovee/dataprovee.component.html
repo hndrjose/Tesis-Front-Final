@@ -1,0 +1,144 @@
+<div class="content py-5 ">
+    <form [formGroup]="forma" (ngSubmit)="GuargarUser()">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <span class="anchor" id="formComplex"></span>
+                    <hr class="my-5">
+                    <h3>Ingresa tus Datos de Perfil</h3>
+                    <!-- <h1>{{usuario[0].Iduser}}</h1> -->
+                    <!-- form complex example -->
+                    <div class="form-row mt-4">
+                        <!-- <div class="col-sm-5 pb-3">
+                        <label for="exampleAccount">Account #</label>
+                        <input type="text" class="form-control" id="exampleAccount" placeholder="XXXXXXXXXXXXXXXX">
+                    </div>
+                    <div class="col-sm-3 pb-3">
+                        <label for="exampleCtrl">Control #</label>
+                        <input type="text" class="form-control" id="exampleCtrl" placeholder="0000">
+                    </div>
+                    <div class="col-sm-4 pb-3">
+                        <label for="exampleAmount">Amount</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text">$</span></div>
+                            <input type="text" class="form-control" id="exampleAmount" placeholder="Amount">
+                        </div>
+                    </div> -->
+                        <div class="col-sm-6 pb-3">
+                            <label for="exampleFirst">Experiencia Laboral</label>
+                            <textarea formControlName="expLaboral" name="expLaboral" class="form-control" id="experiencia"></textarea>
+                        </div>
+                        <div class="col-sm-6 pb-3">
+                            <label for="exampleLast">Conocimientos Basicos</label>
+                            <textarea formControlName="conocimientos" name="conocimientos" class="form-control" id="conocimientos"></textarea>
+                        </div>
+
+                        <!-- <div class="col-md-6 pb-3">
+                            <label for="exampleAccount">Nivel Educativo</label>
+                            <div class="form-group small">
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Basico
+                                </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Intermedio
+                                        </label>
+                                </div>
+                                <div class="form-check form-check-inline disabled">
+                                    <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" > Avanzado
+                                        </label>
+                                </div>
+
+                            </div>
+                        </div> -->
+                        <div class="col-md-6 pb-3">
+                            <label for="exampleMessage">Aptitudes en el Trabajo</label>
+                            <textarea formControlName="competencias" name="competencias" class="form-control" id="exampleMessage"></textarea>
+                            <small class="text-info">
+                                  Agrega aqui tus habilidades al trabajar
+                                </small>
+                        </div>
+                        <!-- <div class="col-12">
+                        <div class="form-row">
+                            <label class="col-md col-form-label" for="name">Generated Id</label>
+                            <input type="text" class="form-control col-md-4" name="gid" id="gid" />
+                            <label class="col-md col-form-label" for="name">Date Assigned</label>
+                            <input type="text" class="form-control col-md-4" name="da" id="da" />
+                        </div>
+                    </div> -->
+                        <div class="row">
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <h3><span class="glyphicon glyphicon-cog "></span> <b>Estas Seguro en Continuar</b></h3>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12 ">
+                                <button type="submit" class="btn bg-danger twhite">Continua</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cta-sektion  border py-3">
+                        <div class="container">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- <div class="footer  py-5  ">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3 footer-one">
+                <img src="http://velikorodnov.com/html/autotrader/images/logo.png" alt="Logo" style="width:120px;">
+
+                <p class="pt-4">Cras sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+                    <a href="https://twitter.com/"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+                    <a href="https://plus.google.com/"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
+                    <a href="mailto:bootsnipp@gmail.com"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 footer-two">
+                <h5>Information </h5>
+                <ul class="list-unstyled">
+                    <li><a href="maintenance.html">Maintenance Tips</a></li>
+                    <li><a href="contact.html">Locations</a></li>
+                    <li><a href="about.html">Testimonials</a></li>
+                    <li><a href="about.html">Careers</a></li>
+                    <li><a href="about.html">Partners</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 footer-three">
+                <h5>Helpful Links </h5>
+                <ul class="list-unstyled">
+                    <li><a href="maintenance.html">Maintenance Tips</a></li>
+                    <li><a href="contact.html">Locations</a></li>
+                    <li><a href="about.html">Testimonials</a></li>
+                    <li><a href="about.html">Careers</a></li>
+                    <li><a href="about.html">Partners</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 footer-four">
+                <h5>Helpful Links </h5>
+                <ul class="list-unstyled">
+                    <li><a href="maintenance.html">Maintenance Tips</a></li>
+                    <li><a href="contact.html">Locations</a></li>
+                    <li><a href="about.html">Testimonials</a></li>
+                    <li><a href="about.html">Careers</a></li>
+                    <li><a href="about.html">Partners</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="copyright bglight1 border pt-2">
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <p> © 2018 xyz Software Pvt. Ltd. </p>
+        </div>
+    </div>
+</div> -->

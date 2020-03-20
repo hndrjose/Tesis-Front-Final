@@ -1,0 +1,124 @@
+/* @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.min.css);
+body {
+    background: #DAE3E7;
+}
+
+.row {
+    margin-top: 40px;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Roboto", sans-serif
+}
+
+div.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    padding: 10px 0;
+    background: #f5f5f5;
+    border-top: 3px solid #3AAA64;
+}
+
+.list-group {
+    list-style: disc inside;
+}
+
+.list-group-item {
+    display: list-item;
+}
+
+.find-more {
+    text-align: right;
+}
+
+.label-theme {
+    background: #3AAA64;
+    font-size: 14px;
+    padding: .3em .7em .3em;
+    color: #fff;
+    border-radius: .25em;
+}
+
+.label a {
+    color: inherit;
+} */
+
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css');
+.bg-dark {
+    background-color: #343a40!important;
+}
+
+.thumbnail {
+    padding: 0px;
+}
+
+.panel {
+    position: relative;
+}
+
+.panel>.panel-heading:after,
+.panel>.panel-heading:before {
+    position: absolute;
+    top: 11px;
+    left: -16px;
+    right: 100%;
+    width: 0;
+    height: 0;
+    display: block;
+    content: " ";
+    border-color: transparent;
+    border-style: solid solid outset;
+    pointer-events: none;
+}
+
+.panel>.panel-heading:after {
+    border-width: 7px;
+    border-right-color: #f7f7f7;
+    margin-top: 1px;
+    margin-left: 2px;
+}
+
+.panel>.panel-heading:before {
+    border-right-color: #ddd;
+    border-width: 8px;
+}
+
+.clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+
+label:hover,
+label:hover~label {
+    color: orange;
+}
+
+input[type="radio"]:checked~label {
+    color: orange;
+}
+
+#form p {
+    text-align: center;
+}
+
+#form label {
+    font-size: 20px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+label {
+    color: grey;
+}

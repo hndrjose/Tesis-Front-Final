@@ -1,0 +1,214 @@
+<nav class="navbar navbar-expand-lg fixed-top" id="up">
+    <img src="./assets/img/servitodo.png" class="img-10 pointer" width="160" height="30">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <div class="login">
+                <a routerLink="/login" class="login-btn"><i class="fa fa-user-circle" aria-hidden="true"></i><span class="d-none d-md-inline-block">Login</span></a>
+                <a> |||  </a>
+                <a routerLink="/decision" class="signup-btn"><i class="fa fa-user-plus" aria-hidden="true"></i><span class="d-none d-md-inline-block">Registrate</span></a></div>
+        </ul>
+
+    </div>
+</nav>
+
+<section class="wrapper fixed-top">
+    <div class="overlays"></div>
+    <!--Mascara de imagen-->
+    <div class="container h-100">
+        <div class="row h-100 justify-content-between align-items-center">
+            <div class="col-lg-10">
+                <div class="text-center">
+                    <!-- <p>Aplica tus conocimientos y obten beneficios por ello, consige proyectos y aprovecha tu tiempo al máximo . -->
+                    <!-- </p> -->
+                    <form (ngSubmit)="onkeypress(input.value)">
+
+                        <div class="d-flex align-items-start">
+                            <h3>Haz que tus proyectos se hagan realidad.</h3>
+                        </div>
+                        <div class="card-body row no-gutters align-items-center">
+                            <div class="col-auto">
+                                <i class="fas fa-search h4 text-body"></i>
+                            </div>
+                            <!--end of col-->
+                            <div class="col">
+                                <input class="form-control form-control-lg form-control-borderless" #input (keyup.enter)="onkeypress(input.value)" type="search" placeholder="Busca Aqui...">
+                            </div>
+                            <!--end of col-->
+                            <div class="col-auto">
+                                <button class="btn btn-lg btn-success" type="submit">Empezar</button>
+                            </div>
+                            <!--end of col-->
+                        </div>
+                    </form>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cuerpo mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4> Cualesquiera sean tus necesidades, habrá un proveedor de servicios que se encargará de ello: construccion, electicidad, mecanica automotriz, manufactura de productos y tecnologica (y mucho más).</h4>
+
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- <h2>STYLE 1</h2> -->
+
+<!-- PRICING TABLE STYLE 1-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12 float-shadow">
+            <div class="price_table_container">
+                <!-- <div class="price_table_heading">Starter</div> -->
+                <img src="./assets/img/IconoXTesis4.jpg" class="center-block img-circle pointer" width="200" height="200">
+                <!-- <div class="price_table_body">
+                    <div class="price_table_row cost warning-bg"><strong>$ 19</strong><span>/MONTH</span></div>
+                    <div class="price_table_row">1 Website</div>
+                    <div class="price_table_row">10 GB Storage</div>
+                    <div class="price_table_row">10 GB Bandwidth</div>
+                    <div class="price_table_row">10 Email Addresses</div>
+                    <div class="price_table_row">Free Backup</div>
+                    <div class="price_table_row">Full Time Support</div>
+                </div> -->
+                <a href="#" class="btn btn-warning btn-lg btn-block">Explora portafolios</a>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 col-xs-12 float-shadow">
+            <div class="price_table_container">
+                <!-- <div class="price_table_heading">Basic</div> -->
+
+                <img src="./assets/img/IconoXTesis3.jpg" class="center-block img-circle pointer" width="200" height="200">
+                <!-- <div class="price_table_body">
+                    <div class="price_table_row cost primary-bg"><strong>$ 29</strong><span>/MONTH</span></div>
+                    <div class="price_table_row">10 Websites</div>
+                    <div class="price_table_row">100 GB Storage</div>
+                    <div class="price_table_row">100 GB Bandwidth</div>
+                    <div class="price_table_row">50 Email Addresses</div>
+                    <div class="price_table_row">Free Backup</div>
+                    <div class="price_table_row">Full Time Support</div>
+                </div> -->
+                <a class="btn btn-primary btn-lg btn-block">Paga por calidad </a>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 col-xs-12 float-shadow">
+            <div class="price_table_container">
+                <!-- <div class="price_table_heading">Premium</div> -->
+                <img src="./assets/img/IconoXTesis5.jpg" class="center-block img-circle pointer" width="200" height="200">
+                <!-- <div class="price_table_body">
+                    <div class="price_table_row cost success-bg"><strong>$ 39</strong><span>/MONTH</span></div>
+                    <div class="price_table_row">100 Websites</div>
+                    <div class="price_table_row">1 TB Storage</div>
+                    <div class="price_table_row">1 TB Bandwidth</div>
+                    <div class="price_table_row">100 Email Addresses</div>
+                    <div class="price_table_row">Free Backup</div>
+                    <div class="price_table_row">Full Time Support</div>
+                </div> -->
+                <a href="#" class="btn btn-success btn-lg btn-block">Mira las propuestas</a>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 col-xs-12 float-shadow">
+            <div class="price_table_container">
+                <!-- <div class="price_table_heading">Master</div> -->
+                <img src="./assets/img/IconoXTesis6.jpg" class="center-block img-circle pointer" width="200" height="200">
+                <!-- <div class="price_table_body">
+                    <div class="price_table_row cost info-bg"><strong>$ 60</strong><span>/MONTH</span></div>
+                    <div class="price_table_row">Unlimited Websites</div>
+                    <div class="price_table_row">10 TB Storage</div>
+                    <div class="price_table_row">100 TB Bandwidth</div>
+                    <div class="price_table_row">1000 Email Addresses</div>
+                    <div class="price_table_row">Free Backup</div>
+                    <div class="price_table_row">Full Time Support</div>
+                </div> -->
+                <a href="#" class="btn btn-info btn-lg btn-block">Soporte 24/7 </a>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+
+<!-- PRICING TABLE STYLE 1-->
+
+
+<section id="footer">
+    <div class="container">
+        <div class="row text-center text-xs-center text-sm-left text-md-left">
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <h5>Acerca De</h5>
+                <ul class="list-unstyled quick-links">
+                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>¿Quiénes somos? </a></li>
+                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>¿Cómo funciona? </a></li>
+                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Seguridad </a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <h5>Términos</h5>
+                <ul class="list-unstyled quick-links">
+                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Política de privacidad </a></li>
+                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Términos y condiciones </a></li>
+                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Código de conducta </a></li>
+                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Tarifas y cargos </a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <h5>Proveedores de Servicios Domiciliarios
+                </h5>
+                <ul class="list-unstyled quick-links">
+                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Categorías </a></li>
+                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Proyectos </a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                <ul class="list-unstyled list-inline social text-center">
+                    <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-facebook"></i></a></li>
+                    <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-instagram"></i></a></li>
+                    <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-google-plus"></i></a></li>
+                    <li class="list-inline-item"><a href="javascript:void();" target="_blank"><i class="fa fa-envelope"></i></a></li>
+                </ul>
+            </div>
+            <hr>
+        </div> -->
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+                <p><u><a href="https://www.nationaltransaction.com/">National Transaction Corporation</a></u> is a Registered MSP/ISO of Elavon, Inc. Georgia [a wholly owned subsidiary of U.S. Bancorp, Minneapolis, MN]</p>
+                <p class="h6">&copy All right Reversed.<a class="text-green ml-2" href="https://www.sunlimetech.com" target="_blank">Sunlimetech</a></p>
+            </div>
+            <hr>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 50) {
+
+            $('.navbar').css('background', '#263238');
+
+        } else {
+            $('.navbar').css('background', 'transparent');
+        }
+    });
+</script>

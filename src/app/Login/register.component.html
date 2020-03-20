@@ -1,0 +1,94 @@
+<!-- <div class="card text-center">
+    <div class="card-header">
+        <h2> Registro </h2>
+    </div>
+</div>
+
+<div class="jumbotron">
+    <div class="col-md-6 mx-auto"> -->
+<!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+<!-- <form [formGroup]="forma" (ngSubmit)="GuargarUser()">
+
+
+            <div class="floating-label-form-group controls mb-0 pb-2">
+                <label>Usuario</label>
+                <input formControlName="user" name="user" class="form-control" id="usuario" type="text" placeholder="usuario" required="required" data-validation-required-message="Ingrese el Usuario.">
+                <p class="help-block text-danger"></p>
+            </div>
+
+
+            <div class="floating-label-form-group controls mb-0 pb-2">
+                <label>Correo</label>
+                <input formControlName="email" name="email" class="form-control" id="email" type="email" placeholder="Correo" required="required" data-validation-required-message="Ingrese su Correo.">
+                <p class="help-block text-danger"></p>
+            </div>
+
+
+            <div class="floating-label-form-group controls mb-0 pb-2">
+                <label>Contraceña</label>
+                <input formControlName="password" name="password" class="form-control" id="password" type="password" placeholder="Contraceña" required="required" data-validation-required-message="Ingrese su Contraceña.">
+                <p class="help-block text-danger"></p>
+            </div>
+
+
+            <div class="floating-label-form-group controls mb-0 pb-2">
+                <label>Ingrese la Contraceña</label>
+                <input formControlName="password2" name="password2" class="form-control" id="password2" type="password" placeholder="Contraceña" required="required" data-validation-required-message="Ingrese de Nuevo su Contraceña.">
+                <p class="help-block text-danger"></p>
+            </div>
+
+            <br>
+            <div id="success"></div>
+            <div>
+                <button type="submit" class="btn btn-primary btn-xl">Enviar</button>
+            </div>
+
+        </form>
+    </div>
+</div> -->
+
+<article class="card-body mx-auto" style="max-width: 400px;">
+    <h4 class="card-title mt-3 text-center">Registra una Cuenta</h4>
+    <p class="text-center">Inicia con una Cuenta Gratuita</p>
+    <form [formGroup]="forma" (ngSubmit)="GuargarUser()">
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+            </div>
+            <input formControlName="nombre" name="nombre" class="form-control" placeholder="Nombre Completo" type="text">
+        </div>
+        <!-- form-group// -->
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+            </div>
+            <input formControlName="email" name="email" class="form-control" placeholder="Correo Electronico" type="email">
+        </div>
+
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-user-circle"></i> </span>
+            </div>
+            <input formControlName="user" name="user" class="form-control" placeholder="Usuario" type="text">
+        </div>
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+            </div>
+            <input formControlName="password" name="password" class="form-control" placeholder="Tu Password" type="password">
+        </div>
+        <!-- form-group// -->
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+            </div>
+            <input formControlName="password2" name="password2" class="form-control" placeholder="Repite el Password" type="password">
+        </div>
+        <!-- form-group// -->
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Aceptar</button>
+        </div>
+        <!-- form-group// -->
+        <p class="text-center">Tienes una Cuenta? <a href="">Log In</a> </p>
+    </form>
+</article>

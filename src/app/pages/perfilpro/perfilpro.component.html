@@ -1,0 +1,71 @@
+<!-- Contact Section Form -->
+<div class="row animated fadeIn">
+
+    <div class="col-lg-6 mx-auto">
+        <!--    To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+        <form #f="ngForm" (ngSubmit)="guardarDatos(f)" ngNativeValidate name="sentMessage" id="contactForm" novalidate="novalidate">
+            <div class="control-group">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>Nombre</label>
+                    <input [(ngModel)]="usuario[0].nombre" name="nombre" class="form-control" id="nombre" type="text" placeholder="Nombre" required="required" data-validation-required-message="Ingrese su nombre.">
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>Email Address</label>
+                    <input [(ngModel)]="usuario[0].email" name="email" class="form-control" id="email" type="email" placeholder="Correo Electronico" required="required" data-validation-required-message="Ingrese su Correo.">
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>Telefono</label>
+                    <input [(ngModel)]="usuario[0].telefono" name="telefono" class=" form-control " id="telefono " type="tel " placeholder="Telefono " required="required " data-validation-required-message="Ingrese su numero Telefonico. ">
+                    <p class="help-block text-danger "></p>
+                </div>
+            </div>
+            <div class="control-group ">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2 ">
+                    <label>Direccion</label>
+                    <textarea [(ngModel)]="usuario[0].direccion" name="direccion" class="form-control " id="direccion " rows="5 " placeholder="Direccion " required="required " data-validation-required-message="Por favor ingrese su Direccion. "></textarea>
+                    <p class="help-block text-danger "></p>
+                </div>
+            </div>
+
+            <!-- <div class="control-group ">
+                <div class="form-group floating-label-form-group controls mb-0 pb-2 ">
+                    <img class="masthead-avatar mb-5" [src]="usuario[0].img | imagen" alt="">
+                </div>
+            </div> -->
+
+
+            <br>
+            <div id="success "></div>
+            <div class="form-group ">
+                <button type="submit " class="btn btn-primary btn-xl " id="sendMessageButton ">Guardar</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body" align="center">
+                <h4 class="card-title">Fotografía del usuario</h4>
+                <h6 class="card-subtitle"> {{ usuario[0].user }} </h6>
+
+                <img *ngIf="!imagenTemp" [src]="usuario[0].img | imagen" class="w150" width="250" height="300">
+                <img *ngIf="imagenTemp" [src]="imagenTemp" class="w150">
+
+                <input (change)="seleccionImage($event.target.files[0])" type="file">
+
+                <br><br>
+
+                <button (click)="cambiarImagen()" [disabled]="!imagenSubir" type="button" class="btn btn-block btn-success waves-effect waves-light m-r-10">
+                        <i class="fa fa-save"></i>
+                        Actualizar Foto
+                      </button>
+            </div>
+        </div>
+    </div>
+</div>

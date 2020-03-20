@@ -1,0 +1,70 @@
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+
+
+<!-- <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+<link rel="stylesheet" href="https://raw.github.com/blueimp/Bootstrap-Image-Gallery/master/css/bootstrap-image-gallery.css">
+<link rel="stylesheet" href="https://raw.github.com/blueimp/Bootstrap-Image-Gallery/master/css/demo.css"> -->
+<div class="container">
+    <h1>Bootstrap Image Gallery Demo</h1>
+    <blockquote>
+        <p>Bootstrap Image Gallery is an extension to <a href="http://blueimp.github.io/Gallery/">blueimp Gallery</a>, a touch-enabled, responsive and customizable image & video gallery.
+            <br>It displays images and videos in the modal dialog of the <a href="http://getbootstrap.com/">Bootstrap</a> framework, features swipe, mouse and keyboard navigation, transition effects, fullscreen support and on-demand content loading and
+            can be extended to display additional content types.</p>
+    </blockquote>
+    <form class="form-inline">
+        <!-- <div class="form-group ">
+            <button id="video-gallery-button " type="button " class="btn btn-success btn-lg ">
+                <i class="glyphicon glyphicon-film "></i>
+                Launch Video Gallery
+            </button>
+        </div> -->
+        <input (change)="seleccionImage($event.target.files[0])" type="file">
+        <div class="form-group ">
+            <button (click)="cambiarImagen()" [disabled]="!imagenSubir " type="button " class="btn btn-primary btn-lg ">
+                <i class="glyphicon glyphicon-picture "></i>
+                Subir la imgane a la Galeria
+            </button>
+        </div>
+    </form>
+    <br>
+    <form [formGroup]="forma" (ngSubmit)="EliminarImg()">
+        <div class="container ">
+            <br>
+            <!-- <div class="row" *ngFor="let commt of galeria; index as i ">
+                <div class="col-sm-6 col-md-4 col-lg-3 mt-4 ">
+                    <div class="card ">
+                        <img class="card-img-top " [src]="commt.archivo | galeria " class="w150" width="300" height="300">
+                        <div class="card-block ">
+                            <input formControlName="img" name="img" type="checkbox" id="" value="hola">
+                            <label for="vehicle1 "> Selecionar </label><br>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <h1 class="font-weight-light text-center  mt-4 mb-0">Galeria de Fotos</h1>
+
+            <hr class="mt-2 mb-5">
+
+            <div class="container-flex">
+                <div *ngFor="let commt of galeria">
+
+                    <div>
+                        <a href="#" class="d-block mb-4 h-100">
+                            <img class="img-fluid img-thumbnail" [src]="commt.archivo | galeria" class="img-10" width="200" height="220">
+                        </a>
+                    </div>
+                    <!-- <div class="col-lg-3 col-md-4 col-6" class="col-lg-3 col-md-4 col-6">
+                        <a href="#" class="d-block mb-4 h-100">
+                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/aob0ukAYfuI/400x300" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-6">
+                        <a href="#" class="d-block mb-4 h-100">
+                            <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/EUfxH-pze7s/400x300" alt="">
+                        </a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </form>

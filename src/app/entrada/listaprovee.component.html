@@ -1,0 +1,108 @@
+<div class="top-bar">
+    <div class="container">
+        <div class="row d-flex align-items-center">
+            <div class="col-md-6 d-md-block d-none">
+                <img src="./assets/img/servitodo.png" class="img-10 img-circle pointer" width="160" height="30">
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex justify-content-md-end justify-content-between">
+                    <!-- <ul class="list-inline contact-info d-block d-md-none">
+                        <li class="list-inline-item"><a routerLink="/login"><i class="fa fa-phone"></i></a></li>
+                        <li class="list-inline-item"><a routerLink="/decision"><i class="fa fa-envelope"></i></a></li>
+                    </ul> -->
+                    <div class="login"><a routerLink="/login" class="login-btn"><i class="fa fa-user-circle" aria-hidden="true"></i><span class="d-none d-md-inline-block">Loging</span></a>
+                        <a routerLink="/decision" class="signup-btn"><i class="fa fa-user-plus" aria-hidden="true"></i><span class="d-none d-md-inline-block">Registrarce</span></a></div>
+                    <ul class="social-custom list-inline">
+                        <!-- <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-google-plus"></i></a></li> -->
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+                        <!-- <li class="list-inline-item"><a href="#"><i class="fa fa-envelope"></i></a></li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="card shadow">
+            <div class="card-header border-0">
+                <h3 class="mb-0">Lista de Proveedores</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">Perfil</th>
+                            <th scope="col">Esperiencia</th>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let datas of data">
+                            <!-- , let indice=index -->
+                            <td>
+                                <a [routerLink]="['/previous', datas.Iduser]"> {{ datas.nombre }} </a>
+                                <!-- {{datas["Iduser"]}} -->
+                            </td>
+                            <td>
+                                <!-- <span class="badge badge-dot mr-4">
+                        <i class="bg-warning"></i> pending
+                      </span> -->
+                                {{ datas.vocacion }}
+                            </td>
+                            <td>
+                                {{datas.competencias}}
+                            </td>
+                            <td>
+                                <img [src]="datas.img | imagen" class="img-10 img-circle pointer" width="50" height="50">
+                            </td>
+
+                            <td>
+                                <button [routerLink]="['/addpedidos', datas.Iduser]" class="btn btn-primary listar-btn">  
+                                        <i class="fa fa-edit"></i>
+                                      </button>
+
+                            </td>
+
+                    </tbody>
+                </table>
+                <!-- <button (click)="cambiarDesde(-1)" class="btn btn-secondary">
+                    Atras
+                  </button>
+
+                <button (click)="cambiarDesde(1)" class="btn btn-secondary">
+                      Siguientes
+                  </button> -->
+            </div>
+            <!-- <div class="card-footer py-4">
+                <nav aria-label="...">
+                    <ul class="pagination justify-content-end mb-0">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="javascript:void(0)" tabindex="-1">
+                                <i class="fas fa-angle-left"></i>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="javascript:void(0)">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="javascript:void(0)">
+                                <i class="fas fa-angle-right"></i>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div> -->
+        </div>
+    </div>
+</div>

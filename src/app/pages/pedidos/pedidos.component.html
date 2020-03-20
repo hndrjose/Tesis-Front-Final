@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col">
+        <div class="card shadow">
+            <div class="card-header border-0">
+                <h3 class="mb-0">Pedidos de Servicios Solicitados Reciente</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let datas of pedido">
+                            <!-- , let indice=index -->
+                            <td>
+                                <img [src]="datas['img'] | imagen" class="img-10 img-circle pointer" width="50" height="50">
+                            </td>
+                            <td>
+                                <!-- <span class="badge badge-dot mr-4">
+                            <i class="bg-warning"></i> pending
+                          </span> -->
+                                {{ datas['user'] }}
+                            </td>
+                            <td>
+                                {{datas['fecha']}}
+                            </td>
+                            <td>
+                                {{ datas['status'] }}
+                            </td>
+                            <td>
+                                {{ datas['valor'] }}
+                            </td>
+
+                            <td>
+                                <button [routerLink]="['/userchat', user[0].Iduser, datas['Idpedido'], datas['Iduser']]" class="btn btn-primary listar-btn">  
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                            </td>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
