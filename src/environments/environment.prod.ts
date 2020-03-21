@@ -4,5 +4,5 @@ const hostname = hostnameArray[1].replace('//', '');
 
 export const environment = {
   production: true,
-  url: `http://35.225.0.241:3000`
+  url: `https://crucial-accord-261801.appspot.com/`
 };
