@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
     <div class="col">
         <div class="card shadow">
             <div class="card-header border-0">
@@ -7,8 +7,7 @@
 
 
             <form #f="ngForm" (ngSubmit)="capturar( f )">
-                <!-- <label for=""> Ingresa una palabra clave </label>
-                <input type="text" id="vocacion" name="vocacion"> -->
+
                 <label for=""> Seleciona la Ciudad </label>
                 <select ngModel name="opcion" id="opcion">
                         <option value="San Pedro Sula">San Pedro Sula</option>
@@ -23,26 +22,6 @@
                 <button type="submit" id="enviar" value="Submit">Submit</button>
             </form>
 
-            <!-- <form (ngSubmit)="capturar()">
-                <label for=""> Ingresa una palabra clave </label>
-                <input [(ngModel)]="vocacion" type="text" id="vocacion" name="vocacion">
-                <label for=""> Seleciona la Ciudad </label>
-                <select [(ngModel)]="opcion">
-                        <option value="San Pedro Sula">San Pedro Sula</option>
-                        <option value="saab">Tegucigalpa</option>
-                        <option value="Tegucigalpa">Puerto Cortés</option>
-                        <option value="Choluteca">Choluteca</option>
-                        <option value="Villanueva">Villanueva</option>
-                        <option value="El Progreso">El Progreso</option>
-                        <option value="La Ceiba">La Ceiba</option>
-                        <option value="Choloma">Choloma</option>
-                </select>
-                <button type="submit" form="form1" value="Submit">Submit</button>
-            </form> -->
-
-
-            <!-- (change)="capturar()" -->
-
             <div class="table-responsive">
                 <table class="table align-items-center table-flush">
                     <thead class="thead-light">
@@ -56,16 +35,12 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let datas of data">
-                            <!-- , let indice=index -->
-                            <td>
+                              <td>
                                 <a [routerLink]="['/previous', datas['Iduser']]"> {{ datas['nombre'] }} </a>
-                                <!-- {{datas["Iduser"]}} -->
+                        
                             </td>
                             <td>
-                                <!-- <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i> pending
-                      </span> -->
-                                {{ datas['vocacion'] }}
+                                 {{ datas['vocacion'] }}
                             </td>
                             <td>
                                 {{datas['competencias']}}
@@ -90,8 +65,8 @@
                 <button (click)="cambiarDesde(1)" class="btn btn-secondary">
                       Siguientes
                   </button>
-            </div>
-            <!-- <div class="card-footer py-4">
+            </div> -->
+<!-- <div class="card-footer py-4">
                 <nav aria-label="...">
                     <ul class="pagination justify-content-end mb-0">
                         <li class="page-item disabled">
@@ -116,6 +91,97 @@
                     </ul>
                 </nav>
             </div> -->
-        </div>
+<!-- </div>
     </div>
-</div>
+</div> -->
+
+<main class="container pt-5">
+
+    <table class="table table-bordered table-definition mb-5">
+        <thead class="table-warning ">
+            <tr>
+                <th></th>
+                <th>Imagen</th>
+                <th>Usuario</th>
+                <th>Esperiencia</th>
+                <th>Competencias</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let datas of data">
+
+                <td>
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                    </label>
+                </td>
+                <td>
+                    <img [src]="datas['img'] | imagen" class="img-10 img-circle pointer" width="50" height="50">
+                </td>
+                <td>
+                    <a [routerLink]="['/previous', datas['Iduser']]"> {{ datas['nombre'] }} </a>
+                </td>
+                <td>
+                    {{datas['vocacion']}}
+                </td>
+                <td>
+                    {{ datas['competencias'] }}
+                </td>
+                <td>
+                    <button [routerLink]="['/addpedidos', datas['Iduser']]" class="btn btn-primary listar-btn">  
+                        <i class="fa fa-caret-square-o-right" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+            <!-- <tr>
+                <td>
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                    </label>
+                </td>
+                <td>John Lilki</td>
+                <td>September 14, 2013</td>
+                <td>jhlilk22@yahoo.com</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                    </label>
+                </td>
+                <td>John Lilki</td>
+                <td>September 14, 2013</td>
+                <td>jhlilk22@yahoo.com</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                    </label>
+                </td>
+                <td>John Lilki</td>
+                <td>September 14, 2013</td>
+                <td>jhlilk22@yahoo.com</td>
+                <td>No</td>
+            </tr> -->
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th colspan="4">
+                    <!-- <button class="btn btn-primary float-right">Limpiar Marcados</button> -->
+                    <!-- <button class="btn btn-default">Approve</button>
+                    <button class="btn btn-default">Approve All</button> -->
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+
+</main>

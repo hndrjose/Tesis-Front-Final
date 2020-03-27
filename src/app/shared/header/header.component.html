@@ -55,30 +55,30 @@
 
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
     <div class="container">
-        <img src="./assets/img/servitodo.png" class="img-10  pointer" width="160" height="30">
+        <img src="./assets/img/servitodo4.png" class="img-10  pointer" width="130" height="90">
         <!-- <a class="navbar-brand" href="index.html">Simple Ecommerce</a> -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
-            <!-- <ul class="navbar-nav m-auto">
+            <ul class="navbar-nav m-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="category.html">Categories <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" routerLink="/dasboard"> <i class="fa fa-folder-open"></i>Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="product.html">Product</a>
+                    <a class="nav-link" routerLink="/perfil"><i class="fa fa-cog"></i> Perfil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="cart.html">Cart</a>
+                    <a class="nav-link" [routerLink]="['/pedidos', usuario[0].Iduser]"><i class="fa fa-handshake-o"></i> Actividades <span class="badge"> </span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
+                    <a class="nav-link" href="cart.html"><i class="fa fa-history"></i> Historial de Actividades</a>
                 </li>
-            </ul> -->
+                <li class="nav-item">
+                    <a *ngIf="role != 'USER'" routerLink="/cgaleria" class="nav-link" href="contact.html"><i class="fa fa-registered"></i> Galeria de Fotos</a>
+                </li>
+            </ul>
 
             <form class="form-inline my-2 my-lg-0 navbar-right">
 
@@ -94,6 +94,11 @@
                     <i class="fa fa-shopping-cart"></i> Cart
                     <span class="badge badge-light">3</span>
                 </a> -->
+                <!-- <div class="dropdown ">
+                    <a routerLink="/dasboard" aria-hidden="true">
+                        <i class="fa fa-folder-open"></i> Home
+                    </a>
+                </div> -->
                 <div class="dropdown">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-user" aria-hidden="true"></i> {{usuario[0].user}}

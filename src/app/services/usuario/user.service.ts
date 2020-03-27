@@ -88,15 +88,19 @@ galeria: any;
 
     actualizarUsuario(usuario: Usuario ) {
 
-      let url = URL_SERVICIO + '/editarUsuario/' + usuario[0].Iduser;
+      let url = URL_SERVICIO + '/editarUsuario/' + usuario.Iduser;
       let verifica = Boolean;
+     // this.limpiarStorage();
       console.log('Del service ');
-      console.log(usuario[0]);
-      return this.http.put( url, usuario[0] )
+      console.log(usuario);
+      return this.http.put( url, usuario )
                   .map( (resp: any) => {
                    verifica = resp.ok;
                    if (verifica) {
-                    console.log('Registro Acualizado');
+                    let usuarioDB: Usuario = resp.respuesta;
+                    console.log('Nuevo Registro Acualizado');
+                    console.log(usuarioDB);
+                    this.guardarStorage(resp.ok, usuarioDB);
                    }
                    swal('Registro actualizado', 'success' );
                 });
@@ -105,7 +109,7 @@ galeria: any;
 
     guardarStorage(ok: string, usuario: Usuario) {
       localStorage.setItem('ok', ok);
-      localStorage.setItem('user', usuario[0].user);
+      localStorage.setItem('user', usuario.user);
       localStorage.setItem('usuario', JSON.stringify(usuario));
       this.usuario = usuario;
       // this.token = token;
@@ -125,6 +129,7 @@ galeria: any;
               }
        });
     }
+
    cargarStorage() {
     if ( localStorage.getItem('ok')) {
       this.verificar = localStorage.getItem('ok');
@@ -142,12 +147,14 @@ galeria: any;
     // this.usuario = null;
     this.verificar = '';
     localStorage.removeItem('ok');
+    localStorage.removeItem('user');
     localStorage.removeItem('usuario');
     this.router.navigate(['/home']);
   }
 
   limpiarStorage() {
     localStorage.removeItem('ok');
+    localStorage.removeItem('user');
     localStorage.removeItem('usuario');
   }
 

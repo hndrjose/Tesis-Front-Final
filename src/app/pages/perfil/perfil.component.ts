@@ -22,15 +22,20 @@ export class PerfilComponent implements OnInit {
 
   ngOnInit() {
     console.log( this.usuario[0].user);
-
-    this.forma = new FormGroup({
-      nombre: new FormControl( null, Validators.required ),
-    });
   }
 
   guardarDatos( f: NgForm ) {
-    this.usuarioService.actualizarUsuario(this.usuario).subscribe();
-  //  console.log( this.usuario );
+    let pass1 = f.value.password;
+    let pass2 = f.value.password2;
+    const user = new Usuario(this.usuario[0].user, f.value.password, this.usuario[0].email, f.value.nombre, f.value.direccion,
+      f.value.telefono, f.value.vocacion, this.usuario[0].img, this.usuario[0].role, this.usuario[0].Iduser);
+    console.log(pass1);
+
+    console.log(user);
+    this.usuarioService.actualizarUsuario(user).subscribe();
+    // console.log( this.usuario );
+
+
   }
 
 

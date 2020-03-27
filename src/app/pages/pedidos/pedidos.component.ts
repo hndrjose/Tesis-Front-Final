@@ -19,12 +19,13 @@ limit: number;
 desde: number;
 param: string;
 pedido: Pedido;
-
+role: string;
 
   constructor(public usuarioService: UserService, public activatedRoute: ActivatedRoute,
     public pedidoService: PedidosService) {
       this.user = usuarioService.usuario;
       console.log(this.user[0].role);
+      this.role = this.user[0].role;
       activatedRoute.params.subscribe(
         params => {
              let termino = params['termino'];

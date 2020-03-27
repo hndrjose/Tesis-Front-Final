@@ -1,11 +1,11 @@
-<div class="row">
+<!-- <div class="row">
     <div class="col">
         <div class="card shadow">
             <div class="card-header border-0">
                 <h3 class="mb-0">Pedidos de Servicios Solicitados Reciente</h3>
             </div>
-            <div class="table-responsive">
-                <table class="table align-items-center table-flush">
+            <div class="table-responsive"> -->
+<!-- <table class="table align-items-center table-flush">
                     <thead class="thead-light">
                         <tr>
                             <th scope="col">Imagen</th>
@@ -17,14 +17,12 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let datas of pedido">
-                            <!-- , let indice=index -->
+                         
                             <td>
                                 <img [src]="datas['img'] | imagen" class="img-10 img-circle pointer" width="50" height="50">
                             </td>
                             <td>
-                                <!-- <span class="badge badge-dot mr-4">
-                            <i class="bg-warning"></i> pending
-                          </span> -->
+                           
                                 {{ datas['user'] }}
                             </td>
                             <td>
@@ -44,8 +42,107 @@
                             </td>
 
                     </tbody>
-                </table>
-            </div>
+                </table> -->
+
+<!-- </div>
         </div>
     </div>
-</div>
+</div> -->
+
+<main class="container pt-5">
+
+    <table class="table table-bordered table-definition mb-5">
+        <thead class="table-warning ">
+            <tr>
+                <th></th>
+                <th></th>
+                <th>Usuario</th>
+                <th>Fecha del Registro</th>
+                <th>Estado</th>
+                <th>Valor de la Actividad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let datas of pedido">
+
+                <td>
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                    </label>
+                </td>
+                <td>
+                    <img [src]="datas['img'] | imagen" class="img-10 img-circle pointer" width="50" height="50">
+                </td>
+                <td *ngIf="role == 'USER'">
+                    {{ datas['user'] }}
+                </td>
+                <td *ngIf="role == 'PROV'">
+                    {{ datas['deuser'] }}
+                </td>
+                <td>
+                    {{datas['fecha']}}
+                </td>
+                <td>
+                    {{ datas['status'] }}
+                </td>
+                <td>
+                    {{ datas['valor'] }}
+                </td>
+
+                <td>
+                    <button [routerLink]="['/userchat', user[0].Iduser, datas['Idpedido'], datas['Iduser']]" class="btn btn-primary listar-btn">  
+                        <i class="fa fa-file-text"></i>
+                    </button>
+                </td>
+            </tr>
+            <!-- <tr>
+                <td>
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                    </label>
+                </td>
+                <td>John Lilki</td>
+                <td>September 14, 2013</td>
+                <td>jhlilk22@yahoo.com</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                    </label>
+                </td>
+                <td>John Lilki</td>
+                <td>September 14, 2013</td>
+                <td>jhlilk22@yahoo.com</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                    </label>
+                </td>
+                <td>John Lilki</td>
+                <td>September 14, 2013</td>
+                <td>jhlilk22@yahoo.com</td>
+                <td>No</td>
+            </tr> -->
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th colspan="4">
+                    <button class="btn btn-primary float-right">Limpiar Marcados</button>
+                    <!-- <button class="btn btn-default">Approve</button>
+                    <button class="btn btn-default">Approve All</button> -->
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+
+</main>

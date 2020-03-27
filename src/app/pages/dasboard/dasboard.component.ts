@@ -28,6 +28,7 @@ racaudado: any[];
     public pedidoService: PedidosService ) {
       this.socket = io();
       this.usuario = this.usuarioService.usuario;
+      console.log(this.usuario);
   }
 
 
@@ -39,14 +40,14 @@ racaudado: any[];
       console.log('un usuario esta logeado');
     });
     this.cargarPuntuaciones();
-    this.cargarPedidoTerminado();
-  //  this.cargarPedidoPendiente();
+   // this.cargarPedidoTerminado();
+    this.cargarPedidoPendiente();
     this.cargarvalorRecaudado();
   }
 
 
   cargarPuntuaciones() {
-      console.log(this.usuario[0].Iduser);
+      console.log('El id del Usuario' + this.usuario[0].Iduser);
       let termino = this.usuario[0].Iduser;
       this.dataperfilService.cargarPuntuacion( termino ).subscribe( puntuacion => this.valor = puntuacion );
   }

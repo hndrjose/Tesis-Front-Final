@@ -7,7 +7,7 @@ const hostname = hostnameArray[1].replace('//', '');
 
 export const environment = {
   production: false,
-  url: `http://35.225.0.241:3000`
+  url: `http://35.225.0.241:3000`     // `http://35.225.0.241:3000`   'http://localhost:3000'  
 };
 
 /*
