@@ -16,7 +16,7 @@ import { DataPerfil } from '../../models/dataperfil.models';
 })
 export class DataclientComponent implements OnInit {
   forma: FormGroup;
-  usuario: Usuario = new Usuario('', '', '', '', '', '', '', '', '', );
+  usuario: Usuario = new Usuario('', '', '', '', '', '', 0, '', '', '', );
   dataperfil: DataPerfil[] = [];
   user: string;
   iduser: number;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { Usuario } from '../../models/usuarios.models';
 import { UserService } from '../../services/service.index';
@@ -8,6 +8,7 @@ import { Comentarios } from '../../models/comentario.models';
 import { Pedido } from '../../models/pedido.models';
 import { ComentarioService } from '../../services/comentarios/comentario.service';
 import { SocketsService } from '../../services/websocket/sockets.service';
+import { Subscription } from 'rxjs';
 
 
 
@@ -16,60 +17,77 @@ import { SocketsService } from '../../services/websocket/sockets.service';
   templateUrl: './userchat.component.html',
   styleUrls: ['./userchat.component.css']
 })
-export class UserchatComponent implements OnInit {
+export class UserchatComponent implements OnInit, OnDestroy {
 
 test = 'esto es Web Socket';
 fecha = new Date();
 fecha2 = this.fecha.getFullYear() + '-' + (this.fecha.getMonth() + 1) + '-' +  this.fecha.getDate();
 Hora = this.fecha.getHours() + ':' + this.fecha.getMinutes();
 forma: FormGroup;
-user: string;
+user: number;
 usuario: Usuario;
-idpedidoparam: number;
 Idchat: number;
 param: string;
-pedido = new Pedido('', '', '', '', 0, '', 0, '');
+actividad2: any;
+pedido: any;
 comentarioss: any;
 origen = 'C';
+proveedor: number;
+Idactividad: number;
+role: string;
+MsjSubcription: Subscription;
+
 
   constructor( public usuarioService: UserService, public activatedRoute: ActivatedRoute,
     public pedidoService: PedidosService, public comentarioService: ComentarioService, public socketService: SocketsService ) {
     this.usuario = usuarioService.usuario;
-
+    this.role = this.usuario[0].role;
     activatedRoute.params.subscribe(
       params => {
-           this.idpedidoparam =  params['idpedido']
            this.user = params['iduser'];
-           let idpedido = params['idpedido'];
-           this.cargarPedido(idpedido);
-           this.cargarComentarios( idpedido );
+           this.proveedor = params['iduserpro'];
+           this.Idactividad = params['idpedido'];
+           this.cargarActividadID(this.Idactividad);
+           // this.cargarPedido(idpedido);
+
+           this.cargarComentarios( this.Idactividad, this.user);
        });
   }
 
   ngOnInit() {
-    this.socketService.listen('test event').subscribe( (data) => {
-      console.log(data);
+    this.MsjSubcription = this.comentarioService.getMessage().subscribe( (msg) => {
+      console.log(msg);
     });
     this.forma = new FormGroup({
       comentario: new FormControl( null, Validators.required )
     });
   }
 
-  cargarPedido( termino: string ) {
-    // console.log('Id Pedido: ' + termino );
-    // console.log('Id del usuario contratante: ' + this.user);
-    // console.log('Id del Proveedor: ' + this.usuario[0].Iduser);
-    this.pedidoService.cargarPedido( termino ).subscribe( pedido  =>  this.pedido = pedido );
-   // console.log(this.usuario[0].Iduser);
+  ngOnDestroy() {
+    this.MsjSubcription.unsubscribe();
   }
 
-  cargarComentarios( idpedido: string ) {
+  cargarActividadID(Idactivi: number) {
+    console.log('el parametro es:' + Idactivi);
+    this.pedidoService.cargarActividadID(Idactivi).subscribe( ( resp: any ) =>  {
+      this.actividad2 = resp;
+    });
+   }
 
-    this.comentarioService.cargarComentarios( idpedido ).subscribe( respuesta => this.comentarioss = respuesta );
+
+  cargarPedido( termino: string ) {
+    this.pedidoService.cargarPedido( termino ).subscribe( pedido  =>  this.pedido = pedido );
+ }
+
+  cargarComentarios( idactividad: number, idorigen: number ) {
+    this.comentarioService.cargarComentarios( idactividad, idorigen ).subscribe( respuesta => this.comentarioss = respuesta );
+  }
+
+  cargarComentariosProv( idactividad: number, idorigen: number ) {
+    this.comentarioService.cargarComentarios( idactividad, idorigen ).subscribe( respuesta => this.comentarioss = respuesta );
   }
 
   enviarComent() {
-
     this.Idchat = 0;
 
     let comentarios = new Comentarios(
@@ -77,11 +95,17 @@ origen = 'C';
       this.fecha2,
       this.forma.value.comentario,
       this.usuario[0].Iduser,
-      this.idpedidoparam,
-      this.origen
+      this.Idactividad,
+      this.origen,
+      this.user,
+      this.Hora
     );
     console.log(comentarios);
-    this.comentarioService.crearComentario( comentarios ).subscribe();
+    // this.comentarioService.crearComentario( comentarios ).subscribe();
+
+    this.comentarioService.envioMensaje(this.forma.value.comentario);
+
+
   }
 
 }

@@ -10,7 +10,7 @@ import { UserService } from '../../services/service.index';
 })
 export class PerfilproComponent implements OnInit {
 
-  usuario: Usuario = new Usuario('', '', '', '', '', '', '', '', '', );
+  usuario: Usuario = new Usuario('', '', '', '', '', '', 0, '', '', '', );
   forma: FormGroup;
   imagenSubir: File;
   imagenTemp: any;

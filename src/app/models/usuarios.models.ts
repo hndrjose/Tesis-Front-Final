@@ -5,10 +5,11 @@ export class Usuario {
         public email: string,
         public nombre?: string,
         public direccion?: string,
+        public role?: string,
+        public ciudad?: number,
         public telefono?: string,
         public vocacion?: string,
         public img?: string,
-        public role?: string,
         public Iduser?: number
     ) { }
 }

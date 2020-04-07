@@ -2,6 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+// Sockets
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+const config: SocketIoConfig = { url: environment.url, options: {} }
+
+import { environment } from '../environments/environment';
+
+
 // Componentes
 import { AppComponent } from './app.component';
 
@@ -35,6 +42,7 @@ import { ListaproveeComponent } from './entrada/listaprovee.component';
 import { FootersComponent } from './entrada/abauts/footers/footers.component';
 import { TerminosComponent } from './entrada/abauts/terminos/terminos.component';
 import { AcercadComponent } from './entrada/abauts/acercad/acercad.component';
+import { FillistaComponent } from './entrada/fillista.component';
 
 
 @NgModule({
@@ -49,10 +57,12 @@ import { AcercadComponent } from './entrada/abauts/acercad/acercad.component';
     ListaproveeComponent,
     FootersComponent,
     TerminosComponent,
-    AcercadComponent
+    AcercadComponent,
+    FillistaComponent
   ],
   imports: [
     BrowserModule,
+    SocketIoModule.forRoot(config),
     APP_ROUTES,
     SharedModule,
     PageModule,

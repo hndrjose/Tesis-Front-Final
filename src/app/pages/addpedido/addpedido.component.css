@@ -4,9 +4,9 @@ body {
 
 .price-box {
     margin: 0 aut0o;
-    background: #E9E9E9;
+    background: #999;
     border-radius: 10px;
-    padding: 40px 15px;
+    padding: 20px 15px;
     /*width: 500px;*/
 }
 
@@ -81,7 +81,7 @@ h4.great {
     padding: 7px 15px;
     color: #ffffff;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 200;
     border-radius: 5px;
     display: inline-block;
     -moz-box-shadow: 2px 4px 5px 0 #ccc;
@@ -103,7 +103,7 @@ h4.great {
     position: absolute;
     left: 0;
     bottom: 5px;
-    width: 100%;
+    width: 50%;
     height: 3px;
     background: #7f8c8d;
     opacity: 0.5;
@@ -129,9 +129,9 @@ h4.great {
 .price-form {
     background: #ffffff;
     margin-bottom: 10px;
-    padding: 20px;
+    padding: 5px;
     border: 1px solid #eeeeee;
-    min-height: 300px;
+    min-height: 240px;
     border-radius: 4px;
     /*-moz-box-shadow:    0 5px 5px 0 #ccc;
       -webkit-box-shadow: 0 5px 5px 0 #ccc;
@@ -185,8 +185,30 @@ img.payment {
 /* HR */
 
 hr.style {
-    margin-top: 0;
+    margin-top: 15;
     border: 0;
     border-bottom: 1px dashed #ccc;
     background: #999;
+}
+
+.credit-card-div span {
+    padding-top: 10px;
+}
+
+.panel-default {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 21px;
+}
+
+.credit-card-div img {
+    padding-top: 30px;
+}
+
+.credit-card-div .small-font {
+    font-size: 9px;
+}
+
+.credit-card-div .pad-adjust {
+    padding-top: 10px;
 }

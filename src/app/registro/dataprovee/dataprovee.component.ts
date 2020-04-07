@@ -25,10 +25,7 @@ export class DataproveeComponent implements OnInit {
       activatedRoute.params.subscribe(
         params => {
              let termino = params['user'];
-           //  this.user = termino;
-             this.usuarioService.cargarUsuarioUser(termino).subscribe( usuarios =>  this.usuario = usuarios);
-             console.log('la id es: ' + this.usuario);
-           //  this.cargarparametros(termino);
+             this.usuarioService.cargarUsuarioUser(termino).subscribe( (resp: any) =>  this.usuario = resp);
          });
     }
 
@@ -46,11 +43,11 @@ export class DataproveeComponent implements OnInit {
       this.forma.value.competencias,
       this.forma.value.expLaboral,
       this.forma.value.conocimientos,
-      this.usuario.Iduser,
+      this.usuario[0].Iduser,
     );
 
-    console.log(this.usuario.Iduser);
-    this.pedidoService.crearConteo( this.usuario ).subscribe();
+    console.log(this.usuario[0].Iduser);
+    this.pedidoService.crearConteo( this.usuario[0] ).subscribe();
     this.dataPerfilService.creardataPerfil( dataperfil ).subscribe ( resp => this.router.navigate(['/login']) );
 
   }

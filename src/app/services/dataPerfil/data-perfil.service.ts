@@ -23,8 +23,12 @@ export class DataPerfilService {
 
   dataperfil: DataPerfil;
   verificar: string;
+  termino: string;
+  idciudad: string;
 
-  constructor(public http: HttpClient, public router: Router) { }
+  constructor(public http: HttpClient, public router: Router) {
+    this.cargarStorage();
+   }
 
   creardataPerfil( dataperfil: DataPerfil) {
     const url = URL_SERVICIO + '/addDataPerfil';
@@ -58,11 +62,39 @@ export class DataPerfilService {
               });
   }
 
-  cargarDataPerfil(termino: string, page: number) {  // termino: string, page: number, limit: number
-    let url = URL_SERVICIO + '/SelecDataLike/' + termino ; // +  '?page=' + page + '&limit=2'
-    return this.http.post(url, '')
-    .map( (resp: any) => resp.perfiles );
+  cargarDataPerfil(termino: string, Idciudad: number) {  // termino: string, page: number, limit: number
+    let url = URL_SERVICIO + '/SelecDataLike/' + termino + '/' + Idciudad ; // +  '?page=' + page + '&limit=2'
+    return this.http.get(url)
+    .map( (resp: any) => resp.perfiles )
+    .catch( err => {
+     // console.log( err.error.mensaje );
+      swal('Mensaje de Error', err.error.mensaje, 'error');
+      return Observable.throw( err );
+     });
 
+  }
+
+  cargarDataID(Idciudad: number) {  // termino: string, page: number, limit: number
+    let verifica = Boolean;
+    let url = URL_SERVICIO + '/SelecpamanID/' + Idciudad ; // +  '?page=' + page + '&limit=2'
+    return this.http.get(url)
+    .map( (resp: any) =>  resp.perfiles );
+
+  }
+
+  guardarStorage(termino: string, Idciudad: string) {
+    localStorage.setItem('termino', termino);
+    localStorage.setItem('Idciudad', Idciudad);
+  }
+
+  limpiarStorage() {
+    localStorage.removeItem('termino');
+    localStorage.removeItem('Idciudad');
+  }
+
+  cargarStorage() {
+      this.termino = localStorage.getItem('termino');
+      this.idciudad = localStorage.getItem('Idciudad');
   }
 
   paramDataPerfil(termino: string, direccion: string, page: number) {  // termino: string, page: number, limit: number
@@ -125,6 +157,14 @@ export class DataPerfilService {
     let url = URL_SERVICIO + '/datagaleria/' + Id;
     return this.http.get(url)
     .map( (resp: any) => resp.usuarios );
+
+  }
+
+  cargarDataPerfilxId( Id: number ) {
+    console.log(Id);
+    let url = URL_SERVICIO + '/SelecDataPerfil/' + Id;
+    return this.http.get(url)
+    .map( (resp: any) => resp.dataperfil );
 
   }
 

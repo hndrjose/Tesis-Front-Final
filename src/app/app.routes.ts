@@ -19,7 +19,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register/:termino', component: RegisterComponent },
   { path: 'decision', component: DecisionComponent },
-  { path: 'listprovee/:termino', component: ListaproveeComponent }
+  { path: 'listprovee/:termino/:idciudad', component: ListaproveeComponent }
   //  {
   //      path: '',
   //      component: PageComponent,

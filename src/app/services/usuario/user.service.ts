@@ -41,7 +41,6 @@ galeria: any;
        })
        .catch( err => {
         console.log( err.error.mensaje );
-     //   swal(err.error.mensaje, err.error.errors.message, 'error');
         return Observable.throw( err );
        });
   }
@@ -62,11 +61,8 @@ galeria: any;
            verificar = resp.ok;
            console.log(verificar);
            if (verificar) {
-             console.log('Existe el Registro');
-           //  this.actualizarUsuario(usuario) .subscribe();
              return false;
            } else {
-             console.log('No existe');
              this.crearUsuario(usuario).subscribe();
            }
      });
@@ -79,10 +75,9 @@ galeria: any;
     }
 
     cargarUsuarioUser(termino: string) {
-      let url = URL_SERVICIO + '/SelecionUser/' + termino;
+      let url = URL_SERVICIO + '/SelecUser/' + termino;
       return this.http.get(url)
         .map( (resp: any) =>  resp.usuarios );
-      // this.guardarStorage(resp.ok, resp.usuarios);
     }
 
 
@@ -112,7 +107,6 @@ galeria: any;
       localStorage.setItem('user', usuario.user);
       localStorage.setItem('usuario', JSON.stringify(usuario));
       this.usuario = usuario;
-      // this.token = token;
     }
 
     LogearUsuario( usuario: Usuario ) {
@@ -122,11 +116,13 @@ galeria: any;
              this.verificar = resp.ok;
              if (this.verificar) {
                  this.guardarStorage( resp.ok, resp.usuarios );
-              // return true;
-              } else {
-                 console.log('No existe');
-                // swal('El Usuario o Contraceña esta Incorrecto', 'warning');
               }
+       })
+       .catch( err => {
+        // console.log(err);
+        // console.log( err.error.mensaje );
+         swal('Error en el Login', err.error.mensaje, 'error');
+         return Observable.throw( err );
        });
     }
 
@@ -134,17 +130,13 @@ galeria: any;
     if ( localStorage.getItem('ok')) {
       this.verificar = localStorage.getItem('ok');
       this.usuario = JSON.parse( localStorage.getItem('usuario') );
-    //  this.menu = JSON.parse( localStorage.getItem('menu') );
     } else {
-    //  this.token = '';
       this.usuario = null;
-    //  this.menu = [];
     }
   }
 
 
   logout() {
-    // this.usuario = null;
     this.verificar = '';
     localStorage.removeItem('ok');
     localStorage.removeItem('user');
@@ -160,26 +152,21 @@ galeria: any;
 
 
   estaLogueado() {
-    console.log('esta log: ' + this.verificar);
-    return ( this.verificar ) ? true : false;
+     return ( this.verificar ) ? true : false;
   }
 
   cambiarImagen( archivo: File, id: string ) {
- // console.log( archivo + '  ' + id );
     this.subirArchivo.subirArchivo( archivo, 'usuario', id )
           .then( (resp: any) => {
-            this.usuario[0].img = resp.usuarios;
-            console.log('imgane:  ' + this.usuario[0].img);
            // swal( 'Imagen Actualizada', this.usuario.nombre, 'success' );
-            this.guardarStorage( resp.ok,  this.usuario );
+            this.guardarStorage( resp.ok,  resp.usuarios);
           })
           .catch( resp => {
-            console.log( resp );
-          }) ;
+            console.log( resp.usuarios );
+          });
   }
 
   adgalery( archivo: File, id: string) {
-    // console.log( archivo + '  ' + id );
        this.subirArchivo.subirArchivo2( archivo, 'usuario', id)
              .then( (resp: any) => {
                console.log('Imagen Subida');
@@ -205,6 +192,15 @@ galeria: any;
                return false;
            }
      });
+  }
+
+
+
+
+  cargarCiudades( ) {
+    let url = URL_SERVICIO + '/ciudades';
+    return this.http.get( url )
+     .map( (resp: any) => resp.respuesta );
   }
 
 }

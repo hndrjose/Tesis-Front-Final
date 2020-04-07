@@ -15,6 +15,7 @@ import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 import { SubirarchivoService } from '../subirarchivo/subirarchivo.service';
 import { DatosEmail } from '../../models/datos.models';
+import { SocketsService } from '../websocket/sockets.service';
 
 
 
@@ -23,7 +24,7 @@ import { DatosEmail } from '../../models/datos.models';
 })
 export class ComentarioService {
 
-  constructor(public http: HttpClient, public router: Router) { }
+  constructor(public http: HttpClient, public router: Router, public socketsService: SocketsService) { }
 
 
   crearComentario( comentario: Comentarios ) {
@@ -41,8 +42,8 @@ export class ComentarioService {
        });
   }
 
-  cargarComentarios(termino: string) {  // termino: string, page: number, limit: number
-    let url = URL_SERVICIO + '/SelecComentPed/' + termino ;
+  cargarComentarios(Idactividad: number, Idorigen: number) {  // termino: string, page: number, limit: number
+    let url = URL_SERVICIO + '/SelecComentPed/' + Idactividad + '/' + Idorigen;
     return this.http.get(url)
     .map( (resp: any) => resp.respuesta );
   }
@@ -51,5 +52,19 @@ export class ComentarioService {
     let url = URL_SERVICIO + '/SelecComentPerfil/' + termino ;
     return this.http.get(url)
     .map( (resp: any) => resp.respuesta );
+  }
+
+  envioMensaje(mensaje: string) {
+    const payload = {
+      de: 'Jose',
+      para: 'Caros',
+      menj: mensaje
+    };
+
+    this.socketsService.emit('mensaje', payload);
+  }
+
+  getMessage() {
+    return this.socketsService.listen('mensaje-nuevo');
   }
 }

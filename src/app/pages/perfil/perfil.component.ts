@@ -9,7 +9,7 @@ import { UserService } from '../../services/service.index';
   styleUrls: ['./perfil.component.css']
 })
 export class PerfilComponent implements OnInit {
-  usuario: Usuario = new Usuario('', '', '', '', '', '', '', '', '', );
+  usuario: Usuario = new Usuario('', '', '', '', '', '', 0, '', '', '', 0);
   forma: FormGroup;
   imagenSubir: File;
   imagenTemp: any;
@@ -28,7 +28,7 @@ export class PerfilComponent implements OnInit {
     let pass1 = f.value.password;
     let pass2 = f.value.password2;
     const user = new Usuario(this.usuario[0].user, f.value.password, this.usuario[0].email, f.value.nombre, f.value.direccion,
-      f.value.telefono, f.value.vocacion, this.usuario[0].img, this.usuario[0].role, this.usuario[0].Iduser);
+      this.usuario[0].role, f.value.telefono, f.value.vocacion, this.usuario[0].img,  this.usuario[0].Iduser);
     console.log(pass1);
 
     console.log(user);
@@ -56,7 +56,7 @@ export class PerfilComponent implements OnInit {
   }
 
   cambiarImagen() {
-   // console.log(this.imagenSubir);
+    console.log(this.imagenSubir);
     this.usuarioService.cambiarImagen( this.imagenSubir, this.usuario[0].Iduser );
    // this.usuarioService.cargarUsuario( this.usuario[0].Iduser ).subscribe();
   }

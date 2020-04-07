@@ -128,21 +128,21 @@
                 <h4 class="modal-title">Editar Imagen de la Cuenta</h4>
             </div>
 
-            <form action="" method="post">
-                <div class="modal-body">
+            <!-- <form action="" method="post"> -->
+            <div class="modal-body">
 
-                    <img *ngIf="!imagenTemp" [src]="usuario[0].img | imagen" class="w150" width="270" height="270">
-                    <img *ngIf="imagenTemp" [src]="imagenTemp" class="w150">
+                <img *ngIf="!imagenTemp" [src]="usuario[0].img | imagen" class="w150" width="270" height="270">
+                <img *ngIf="imagenTemp" [src]="imagenTemp" class="w150" width="270" height="270">
 
-                    <input (change)="seleccionImage($event.target.files[0])" type="file">
-                </div>
+                <input (change)="seleccionImage($event.target.files[0])" type="file">
+            </div>
 
-                <div class="modal-footer">
-                    <input type="hidden" name="isEmpty" value="">
-                    <!-- <button type="input" name="submit" value="newAccount" class="btn btn-success btn-icon"><i class="fa fa-check"></i> Create My Account</button>
-                    <button type="button" class="btn btn-default btn-icon" data-dismiss="modal"><i class="fa fa-times-circle"></i> Cancel</button> -->
-                </div>
-            </form>
+            <div class="modal-footer">
+                <input type="hidden" name="isEmpty" value="">
+                <button (click)="cambiarImagen()" [disabled]="!imagenSubir" type="button" class="btn btn-success btn-icon"><i class="fa fa-check"></i> <h4>Salvar Cambios</h4> </button>
+                <!-- <button type="button" class="btn btn-default btn-icon" data-dismiss="modal"><i class="fa fa-times-circle"></i> Cancel</button> -->
+            </div>
+            <!-- </form> -->
 
         </div>
     </div>

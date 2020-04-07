@@ -1,187 +1,107 @@
-<!-- <div class="row">
-    <div class="col">
-        <div class="card shadow">
-            <div class="card-header border-0">
-                <h3 class="mb-0">Lista de Proveedores de Servicio</h3>
-            </div>
-
-
-            <form #f="ngForm" (ngSubmit)="capturar( f )">
-
-                <label for=""> Seleciona la Ciudad </label>
-                <select ngModel name="opcion" id="opcion">
-                        <option value="San Pedro Sula">San Pedro Sula</option>
-                        <option value="Tegucigalpa">Tegucigalpa</option>
-                        <option value="Tegucigalpa">Puerto Cortés</option>
-                        <option value="Choluteca">Choluteca</option>
-                        <option value="Villanueva">Villanueva</option>
-                        <option value="El Progreso">El Progreso</option>
-                        <option value="La Ceiba">La Ceiba</option>
-                        <option value="Choloma">Choloma</option>
-                </select>
-                <button type="submit" id="enviar" value="Submit">Submit</button>
-            </form>
-
-            <div class="table-responsive">
-                <table class="table align-items-center table-flush">
-                    <thead class="thead-light">
-                        <tr>
-                            <th scope="col">Usuario</th>
-                            <th scope="col">Perfil</th>
-                            <th scope="col">Esperiencia</th>
-                            <th scope="col">Imagen</th>
-                            <th scope="col">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let datas of data">
-                              <td>
-                                <a [routerLink]="['/previous', datas['Iduser']]"> {{ datas['nombre'] }} </a>
-                        
-                            </td>
-                            <td>
-                                 {{ datas['vocacion'] }}
-                            </td>
-                            <td>
-                                {{datas['competencias']}}
-                            </td>
-                            <td>
-                                <img [src]="datas['img'] | imagen" class="img-10 img-circle pointer" width="50" height="50">
-                            </td>
-
-                            <td>
-                                <button [routerLink]="['/addpedidos', datas['Iduser']]" class="btn btn-primary listar-btn">  
-                                        <i class="fa fa-edit"></i>
-                                      </button>
-
-                            </td>
-
-                    </tbody>
-                </table>
-                <button (click)="cambiarDesde(-1)" class="btn btn-secondary">
-                    Atras
-                  </button>
-
-                <button (click)="cambiarDesde(1)" class="btn btn-secondary">
-                      Siguientes
-                  </button>
-            </div> -->
-<!-- <div class="card-footer py-4">
-                <nav aria-label="...">
-                    <ul class="pagination justify-content-end mb-0">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="javascript:void(0)" tabindex="-1">
-                                <i class="fas fa-angle-left"></i>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="javascript:void(0)">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="javascript:void(0)">
-                                <i class="fas fa-angle-right"></i>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div> -->
-<!-- </div>
-    </div>
-</div> -->
-
 <main class="container pt-5">
 
-    <table class="table table-bordered table-definition mb-5">
-        <thead class="table-warning ">
-            <tr>
-                <th></th>
-                <th>Imagen</th>
-                <th>Usuario</th>
-                <th>Esperiencia</th>
-                <th>Competencias</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let datas of data">
+    <div>
+        <label for="ciudad">Ciudad:</label>
+        <select id="ciudad" (change)="onSelect($event.target.value)">
+            <option> -- Seleciona una Ciudad -- </option>
+            <option *ngFor="let datas of ciudades" value="{{datas.Idciudad}}">{{datas.nombre}} </option>
+        </select>
+    </div>
 
-                <td>
-                    <label class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input">
-                        <span class="custom-control-indicator"></span>
-                    </label>
-                </td>
-                <td>
-                    <img [src]="datas['img'] | imagen" class="img-10 img-circle pointer" width="50" height="50">
-                </td>
-                <td>
-                    <a [routerLink]="['/previous', datas['Iduser']]"> {{ datas['nombre'] }} </a>
-                </td>
-                <td>
-                    {{datas['vocacion']}}
-                </td>
-                <td>
-                    {{ datas['competencias'] }}
-                </td>
-                <td>
-                    <button [routerLink]="['/addpedidos', datas['Iduser']]" class="btn btn-primary listar-btn">  
-                        <i class="fa fa-caret-square-o-right" aria-hidden="true"></i>
-                    </button>
-                </td>
-            </tr>
-            <!-- <tr>
-                <td>
-                    <label class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input">
-                        <span class="custom-control-indicator"></span>
-                    </label>
-                </td>
-                <td>John Lilki</td>
-                <td>September 14, 2013</td>
-                <td>jhlilk22@yahoo.com</td>
-                <td>No</td>
-            </tr>
-            <tr>
-                <td>
-                    <label class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input">
-                        <span class="custom-control-indicator"></span>
-                    </label>
-                </td>
-                <td>John Lilki</td>
-                <td>September 14, 2013</td>
-                <td>jhlilk22@yahoo.com</td>
-                <td>No</td>
-            </tr>
-            <tr>
-                <td>
-                    <label class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input">
-                        <span class="custom-control-indicator"></span>
-                    </label>
-                </td>
-                <td>John Lilki</td>
-                <td>September 14, 2013</td>
-                <td>jhlilk22@yahoo.com</td>
-                <td>No</td>
-            </tr> -->
-        </tbody>
-        <tfoot>
-            <tr>
-                <th></th>
-                <th colspan="4">
-                    <!-- <button class="btn btn-primary float-right">Limpiar Marcados</button> -->
-                    <!-- <button class="btn btn-default">Approve</button>
-                    <button class="btn btn-default">Approve All</button> -->
-                </th>
-            </tr>
-        </tfoot>
-    </table>
+    <br>
+
+    <div class="spinner-grow text-dark">
+
+        <table class="table table-bordered table-definition mb-5">
+            <thead class="table-warning ">
+                <tr>
+                    <th></th>
+                    <th>Imagen</th>
+                    <th>Usuario</th>
+                    <th>Esperiencia</th>
+                    <th>Competencias</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let datas of data">
+
+                    <td>
+                        <label class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input">
+                            <span class="custom-control-indicator"></span>
+                        </label>
+                    </td>
+                    <td>
+                        <img [src]="datas['img'] | imagen" class="img-10 img-circle pointer" width="50" height="50">
+                    </td>
+                    <td>
+                        <a [routerLink]="['/previous', datas['Iduser']]"> {{ datas['nombre'] }} </a>
+                    </td>
+                    <td>
+                        {{datas['vocacion']}}
+                    </td>
+                    <td>
+                        {{ datas['competencias'] }}
+                    </td>
+                    <td>
+                        <button [routerLink]="['/addpedidos', datas['Iduser']]" class="btn btn-primary listar-btn">  
+                            <i class="fa fa-caret-square-o-right" aria-hidden="true"></i>
+                        </button>
+                    </td>
+                </tr>
+                <!-- <tr>
+                    <td>
+                        <label class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input">
+                            <span class="custom-control-indicator"></span>
+                        </label>
+                    </td>
+                    <td>John Lilki</td>
+                    <td>September 14, 2013</td>
+                    <td>jhlilk22@yahoo.com</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input">
+                            <span class="custom-control-indicator"></span>
+                        </label>
+                    </td>
+                    <td>John Lilki</td>
+                    <td>September 14, 2013</td>
+                    <td>jhlilk22@yahoo.com</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input">
+                            <span class="custom-control-indicator"></span>
+                        </label>
+                    </td>
+                    <td>John Lilki</td>
+                    <td>September 14, 2013</td>
+                    <td>jhlilk22@yahoo.com</td>
+                    <td>No</td>
+                </tr> -->
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th colspan="4">
+                        <!-- <button class="btn btn-primary float-right">Limpiar Marcados</button> -->
+                        <!-- <button class="btn btn-default">Approve</button>
+                        <button class="btn btn-default">Approve All</button> -->
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
+
+
+
+    </div>
+
 
 </main>

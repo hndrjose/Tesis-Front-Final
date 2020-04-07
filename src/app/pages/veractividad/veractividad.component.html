@@ -1,0 +1,51 @@
+<div class="container">
+
+    <!--Contact heading-->
+    <h5 class="h1 m-0">Actividades del Proveedor de Servicio</h5>
+    <!--Contact *ngFor="let datas of pedido; index as i"   description-->
+    <!-- <p class="pb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus veniam.</p> -->
+    <hr>
+
+    <br>
+
+    <div class="container-flex">
+        <div class="col-md-4">
+            <div class="card mb" *ngFor="let datas of actividad2; index as i">
+                <!-- <img class="card-img-top" src="http://www.placehold.it/286x180" alt="Card image cap"> -->
+                <div class="card-body mb">
+                    <h5 class="card-title">{{ datas['nombre'] }}</h5>
+                    <p class="card-text">{{ datas['descripcion'] }}
+                    </p>
+                    <button [routerLink]="['/userchat', userpro, datas['Idactividad'], user[0].Iduser]" type="button" class="btn btn-primary mb">Cotizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+
+
+    <h5 class="h1 m-0">Mis Actividades</h5>
+    <hr>
+    <div>
+        <h5>Puede Sugerir una Actividad al Proveedor de Servicios Domiciliarios</h5>
+        <button [routerLink]="['/adactividad', 6, 'ad', userpro ]" type=" button " class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Agregar Actividad </button>
+    </div>
+    <br>
+    <div class="container-flex">
+
+        <div class="col-md-4">
+            <div class="card mb" *ngFor="let datas of pedido; index as i">
+                <!-- <img class="card-img-top" src="http://www.placehold.it/286x180" alt="Card image cap"> -->
+                <div class="card-body mb">
+                    <h5 class="card-title">{{ datas['nombre'] }}</h5>
+                    <p class="card-text">{{ datas['descripcion'] }}
+                    </p>
+                    <button [routerLink]="['/userchat', userpro, datas['Idactividad'], user[0].Iduser]" type="button" class="btn btn-primary mb">Cotizar</button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -37,3 +37,11 @@
     border-right-color: #ddd;
     border-width: 8px;
 }
+
+.card {
+    margin-top: 25px;
+}
+
+.card-header {
+    background-color: #94c4f2;
+}

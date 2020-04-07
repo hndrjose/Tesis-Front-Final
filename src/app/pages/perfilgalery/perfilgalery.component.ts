@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { Usuario } from '../../models/usuarios.models';
 import { UserService } from '../../services/service.index';
 import { DataPerfilService } from '../../services/dataPerfil/data-perfil.service';
-
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-perfilgalery',
@@ -12,7 +12,7 @@ import { DataPerfilService } from '../../services/dataPerfil/data-perfil.service
 })
 export class PerfilgaleryComponent implements OnInit {
 
-  usuario: Usuario;
+  usuario = new Usuario('', '', '', '', '', '', 0, '', '', '', 0);
   forma: FormGroup;
   imagenSubir: File;
   imagenTemp: any;
@@ -20,15 +20,21 @@ export class PerfilgaleryComponent implements OnInit {
   galeria: any;
   nomimg: any[] = [];
 
-  constructor(public usuarioService: UserService, public dataperfil: DataPerfilService) {
-    this.usuario = this.usuarioService.usuario;
+  constructor(public usuarioService: UserService, public dataperfil: DataPerfilService,  public activatedRoute: ActivatedRoute) {
+    activatedRoute.params.subscribe(
+      params => {
+           let termino = params['termino'];
+           console.log(termino);
+          //  this.usuarioService.cargarUsuarioId( termino ).subscribe( (resp: any) => { this.usuario = resp; });
+          //  console.log(this.usuario);
+           this.cargarGaleria(termino);
+           this.cargarusuarios(termino);
+       });
+
    }
 
   ngOnInit() {
-   this.cargarGaleria(this.usuario[0].Iduser);
-   console.log(this.usuario[0].Iduser);
-
-   this.forma = new FormGroup({
+     this.forma = new FormGroup({
     img: new FormControl( null, Validators.required ),
    });
   }
@@ -48,6 +54,11 @@ export class PerfilgaleryComponent implements OnInit {
     let reader = new FileReader();
     let urlImagenTemp = reader.readAsDataURL( archivo );
     reader.onloadend = () => this.imagenTemp = reader.result;
+  }
+
+  cargarusuarios( termino: string ) {
+    this.usuarioService.cargarUsuarioId( termino ).subscribe( usuarios  =>  this.usuario = usuarios );
+   // console.log(this.usuario[0].Iduser);
   }
 
   cambiarImagen() {

@@ -23,9 +23,9 @@ export class PreviousComponent implements OnInit {
   Hora = this.fecha.getHours() + ':' + this.fecha.getMinutes();
   forma: FormGroup;
   forma2: FormGroup;
-  user: string;
+  dtperfil: any;
   usuario2: any;
-  usuario = new Usuario('', '', '', '', '', '', '', '', '', );
+  usuario = new Usuario('', '', '', '', '', '', 0, '', '', '', );
   imagenSubir: File;
   imagenTemp: any;
   verifica: any;
@@ -49,6 +49,7 @@ export class PreviousComponent implements OnInit {
          this.cargarusuarios(termino);
          this.cargarComentarios(termino);
          this.cargarScore(termino);
+         this.cargarDtPerfil(termino);
      });
   }
 
@@ -96,7 +97,6 @@ export class PreviousComponent implements OnInit {
       this.usuario.Iduser
     );
     this.dataperfilService.crearpuntuacion(calificar).subscribe();
-    console.log(calificar);
   }
 
   cargarComentarios( idpedido: string ) {
@@ -104,6 +104,9 @@ export class PreviousComponent implements OnInit {
     this.comentarioService.cargarComentariosPerfil( idpedido ).subscribe( respuesta => this.comentarioss = respuesta );
   }
 
+  cargarDtPerfil( idpedido: number ) {
+    this.dataperfilService.cargarDataPerfilxId( idpedido ).subscribe( (dataperfil: any) => this.dtperfil = dataperfil );
+  }
   cargarScore( id: number ) {
     this.dataperfilService.cargarPuntuacion( id ).subscribe( puntuacion => this.data = puntuacion );
   }

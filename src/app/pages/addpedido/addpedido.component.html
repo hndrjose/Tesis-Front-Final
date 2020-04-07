@@ -1,9 +1,65 @@
-<div class="container text-center">
+<div class="container">
+    <div class="col-lg-7">
+        <form [formGroup]="forma" (ngSubmit)="SalvarDatos()" class="credit-card-div">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <input formControlName="cardnumber" name="cardnumber" type="text" class="form-control" placeholder="Enter Card Number" />
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                            <span class="help-block text-muted small-font"> Expiry Month</span>
+                            <input formControlName="expiremonth" name="expiremonth" type="text" class="form-control" placeholder="MM" />
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                            <span class="help-block text-muted small-font">  Expiry Year</span>
+                            <input formControlName="expiryyear" name="expiryyear" type="text" class="form-control" placeholder="YY" />
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                            <span class="help-block text-muted small-font">  CCV</span>
+                            <input formControlName="ccv" name="ccv" type="text" class="form-control" placeholder="CCV" />
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                            <img src="assets/img/credit-card.png" class="img-rounded" width="30" height="70" />
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-12 pad-adjust">
+
+                            <input formControlName="namecard" name="namecard" type="text" class="form-control" placeholder="Name On The Card" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 pad-adjust">
+                            <div class="checkbox">
+                                <label>
+                                 <input formControlName="terminos" name="terminos" type="checkbox" (change)="estado()" checked class="text-muted" value="false"> acepto Terminos de Venta <a href="assets/document/condiciones de venta.pdf"> Leer..</a>
+                               </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust">
+                            <input type="submit" class="btn btn-danger" value="CANCEL" />
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4 pad-adjust">
+                            <input type="submit" class="btn btn-warning btn-block" value="Salvar Cambios" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+
+    </div>
     <div class="price-box">
         <div class="row">
-            <div class="col-gl-12">
-                <form ngNativeValidate #f="ngForm" (ngSubmit)="guardarDatos( f )" ngNativeValidate class="form-horizontal form-pricing" role="form">
-                    <div class="price-form ">
+            <div class="col-gl-5">
+                <form ngNativeValidate #f="ngForm" (ngSubmit)="guardarDatos( f )" class="form-horizontal form-pricing" role="form">
+                    <div class="price-form">
 
                         <div class="form-group">
                             <div class="row justify-content-center">
@@ -21,7 +77,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <button type="submit" class="btn btn-primary btn-lg btn-block">Proceder <span class="glyphicon glyphicon-chevron-right"></span></button>
+                                <button type="submit" [disabled]="!validar" class="btn btn-primary btn-lg btn-block">Proceder <span class="glyphicon glyphicon-chevron-right"></span></button>
                             </div>
                         </div>
                         <div class="form-group">
@@ -37,5 +93,13 @@
     </div>
 
 </div>
+
+
+
+
+
+<!-- <div class="container text-cente">
+
+</div> -->
 
 <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js "></script>

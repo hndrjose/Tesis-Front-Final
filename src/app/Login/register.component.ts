@@ -6,6 +6,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Usuario } from '../models/usuarios.models';
 import { DatosEmail } from '../models/datos.models';
 
+
 import { Router, ActivatedRoute  } from '@angular/router';
 import { PedidosService } from '../services/service.index';
 
@@ -21,6 +22,10 @@ export class RegisterComponent implements OnInit {
   role: string;
   emails: string;
   asunto: string;
+//  selectciudades = new Ciudad('', '', );
+  ciudades: any;
+  idciudad: number;
+
   // forma = new  FormGroup({
   //   user : new FormControl(''),
   //   email : new FormControl(''),
@@ -45,7 +50,9 @@ export class RegisterComponent implements OnInit {
       password2: new FormControl( null, Validators.required ),
       email: new FormControl( null, Validators.required ),
       nombre: new FormControl( null, Validators.required ),
+      direccion: new FormControl( null, Validators.required ),
     });
+    this.cargarCiudad();
   }
 
 
@@ -56,7 +63,9 @@ export class RegisterComponent implements OnInit {
       this.forma.value.password,
       this.forma.value.email,
       this.forma.value.nombre,
-      this.role
+      this.forma.value.direccion,
+      this.role,
+      this.idciudad
     );
 
     this.emails = 'jose2010men@hotmail.com';
@@ -84,9 +93,20 @@ export class RegisterComponent implements OnInit {
     } else {
       console.log('password incorreto');
     }
-
-
-
   }
+
+  cargarCiudad() {
+    this.usuarioService.cargarCiudades().subscribe( (resp: any) => this.ciudades = resp );
+    console.log(this.ciudades);
+  }
+
+  onSelect(ciudadId) {
+
+    console.log(ciudadId);
+
+    this.idciudad = ciudadId;
+
+    }
+
 
 }

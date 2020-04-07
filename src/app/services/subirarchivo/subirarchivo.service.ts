@@ -12,7 +12,7 @@ export class SubirarchivoService {
     return new Promise( (resolve, reject ) => {
       let formData = new FormData();
       let xhr = new XMLHttpRequest();
-      formData.append( 'img', archivo, archivo.name );
+      formData.append( 'imge', archivo, archivo.name );
       xhr.onreadystatechange = function() {
         if ( xhr.readyState === 4 ) {
           if ( xhr.status === 200 ) {

@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   usuario: Usuario[] = [];
   email: string;
   recuerdame: boolean = false;
+  validar: boolean;
 
   constructor(public usuarioService: UserService, public router: Router ) { }
 

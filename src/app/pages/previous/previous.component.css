@@ -122,3 +122,35 @@ input[type="radio"] {
 label {
     color: grey;
 }
+
+.flex {
+    flex: 1;
+    /* margin: 0 0 1rem;
+    display: flex;
+    /* align-items por defecto tiene el valor `stretch` */
+    /* align-items: flex-start;*/
+}
+
+.perfil {
+    text-align: center;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.fecha {
+    text-align: center;
+}
+
+.card {
+    margin-bottom: 30px;
+}
+
+.comment {
+    background-color: #94c4f2;
+}
+
+.col-center {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -1,54 +1,3 @@
-<!-- <div class="row">
-    <div class="col">
-        <div class="card shadow">
-            <div class="card-header border-0">
-                <h3 class="mb-0">Pedidos de Servicios Solicitados Reciente</h3>
-            </div>
-            <div class="table-responsive"> -->
-<!-- <table class="table align-items-center table-flush">
-                    <thead class="thead-light">
-                        <tr>
-                            <th scope="col">Imagen</th>
-                            <th scope="col">Usuario</th>
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Valor</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let datas of pedido">
-                         
-                            <td>
-                                <img [src]="datas['img'] | imagen" class="img-10 img-circle pointer" width="50" height="50">
-                            </td>
-                            <td>
-                           
-                                {{ datas['user'] }}
-                            </td>
-                            <td>
-                                {{datas['fecha']}}
-                            </td>
-                            <td>
-                                {{ datas['status'] }}
-                            </td>
-                            <td>
-                                {{ datas['valor'] }}
-                            </td>
-
-                            <td>
-                                <button [routerLink]="['/userchat', user[0].Iduser, datas['Idpedido'], datas['Iduser']]" class="btn btn-primary listar-btn">  
-                                    <i class="fa fa-edit"></i>
-                                </button>
-                            </td>
-
-                    </tbody>
-                </table> -->
-
-<!-- </div>
-        </div>
-    </div>
-</div> -->
-
 <main class="container pt-5">
 
     <table class="table table-bordered table-definition mb-5">
@@ -60,6 +9,7 @@
                 <th>Fecha del Registro</th>
                 <th>Estado</th>
                 <th>Valor de la Actividad</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -89,10 +39,18 @@
                 <td>
                     {{ datas['valor'] }}
                 </td>
-
+                <td *ngIf="datas['visto'] == 'S'">
+                    ....
+                </td>
+                <td *ngIf="datas['visto'] == 'N'">
+                    <font color="green">New..</font>
+                </td>
                 <td>
-                    <button [routerLink]="['/userchat', user[0].Iduser, datas['Idpedido'], datas['Iduser']]" class="btn btn-primary listar-btn">  
-                        <i class="fa fa-file-text"></i>
+                    <button *ngIf="role == 'PROV'" [routerLink]="['/userchat', user[0].Iduser, datas['Idactividad'], datas['deiduser']]" class="btn btn-primary listar-btn">  
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </button>
+                    <button *ngIf="role == 'USER'" [routerLink]="['/userchat', datas['Iduser'], datas['Idactividad'], user[0].Iduser]" class="btn btn-primary listar-btn">  
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
                     </button>
                 </td>
             </tr>

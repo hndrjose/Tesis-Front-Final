@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router' ;
+import { FillistaComponent } from './fillista.component';
+
+
 
 @Component({
   selector: 'app-entrada',
@@ -8,14 +11,15 @@ import { Router } from '@angular/router' ;
 })
 export class EntradaComponent implements OnInit {
 
+
   constructor(public router: Router) { }
 
-  ngOnInit() {
-  }
+ ngOnInit() {
+ }
 
   onkeypress(termino: string) {
-    this.router.navigate(['/listprovee', termino]);
-  }
+    this.router.navigate(['/listprovee', termino, 1]);
+   }
 
 
 }

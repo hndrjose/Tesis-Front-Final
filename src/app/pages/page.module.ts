@@ -32,6 +32,9 @@ import { PreviousComponent } from './previous/previous.component';
 import { UserchatComponent } from './userchat/userchat.component';
 import { PerfilgaleryComponent } from './perfilgalery/perfilgalery.component';
 import { ConfigaleryComponent } from './perfilgalery/configalery.component';
+import { CrearactividadComponent } from './crearactividad/crearactividad.component';
+import { VeractividadComponent } from './veractividad/veractividad.component';
+import { AdactividadComponent } from './adactividad/adactividad.component';
 
 
 
@@ -49,7 +52,10 @@ import { ConfigaleryComponent } from './perfilgalery/configalery.component';
    PreviousComponent,
    UserchatComponent,
    PerfilgaleryComponent,
-   ConfigaleryComponent
+   ConfigaleryComponent,
+   CrearactividadComponent,
+   VeractividadComponent,
+   AdactividadComponent
   ],
   imports: [
     BrowserModule,

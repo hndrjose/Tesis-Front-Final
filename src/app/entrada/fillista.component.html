@@ -1,0 +1,7 @@
+<div class="form-group input-group">
+    <label for="ciudad">Ciudad:</label>
+    <select id="ciudad" (change)="onSelect($event.target.value)">
+        <option> -- Seleciona una Ciudad -- </option>
+        <option *ngFor="let datas of ciudades" value="{{datas.Idciudad}}">{{datas.nombre}} </option>
+    </select>
+</div>

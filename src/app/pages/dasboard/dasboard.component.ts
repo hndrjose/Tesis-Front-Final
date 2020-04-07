@@ -19,16 +19,17 @@ socket;
 usuario: Usuario;
 user: any;
 imagenTemp: any;
-valor: Puntuacion = new Puntuacion( 0, 0 );
+valor: any;
 pedido: any[];
 pendiente: any[];
 racaudado: any[];
+role: string;
 
   constructor( public usuarioService: UserService, public dataperfilService: DataPerfilService,
     public pedidoService: PedidosService ) {
       this.socket = io();
       this.usuario = this.usuarioService.usuario;
-      console.log(this.usuario);
+      this.role = this.usuario[0].role;
   }
 
 
@@ -37,19 +38,17 @@ racaudado: any[];
 
   ngOnInit() {
     this.socket.on( 'usuarioLoging', () => {
-      console.log('un usuario esta logeado');
     });
     this.cargarPuntuaciones();
-   // this.cargarPedidoTerminado();
+    this.cargarPedidoTerminado();
     this.cargarPedidoPendiente();
     this.cargarvalorRecaudado();
   }
 
 
   cargarPuntuaciones() {
-      console.log('El id del Usuario' + this.usuario[0].Iduser);
-      let termino = this.usuario[0].Iduser;
-      this.dataperfilService.cargarPuntuacion( termino ).subscribe( puntuacion => this.valor = puntuacion );
+    let termino = this.usuario[0].Iduser;
+    this.dataperfilService.cargarPuntuacion( termino ).subscribe( puntuacion => this.valor = puntuacion );
   }
 
   cargarPedidoTerminado() {
@@ -59,12 +58,11 @@ racaudado: any[];
 
   cargarPedidoPendiente() {
     let termino = this.usuario[0].Iduser;
-    this.pedidoService.cargarPedPendientes( termino ).subscribe( respuesta => this.pendiente = respuesta );
+    this.pedidoService.cargarPedPenTempo( termino ).subscribe( respuesta => this.pendiente = respuesta );
   }
 
   cargarvalorRecaudado() {
     let termino = this.usuario[0].Iduser;
     this.pedidoService.cargarRecaudado( termino ).subscribe( resultado => this.racaudado = resultado );
   }
-  // {{ pedido[0].terminados }}
-}
+ }

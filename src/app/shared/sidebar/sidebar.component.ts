@@ -30,7 +30,7 @@ export class SidebarComponent implements OnInit {
     if ( tipo === 'USER' ) {
        console.log('Es Usuario');
     } else {
-      this.pedidoService.cargarPedPendientes( termino ).subscribe( terminados => this.pendiente = terminados );
+    //  this.pedidoService.cargarPedPendientes( termino ).subscribe( terminados => this.pendiente = terminados );
     }
   }
 

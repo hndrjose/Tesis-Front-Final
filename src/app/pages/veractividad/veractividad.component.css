@@ -1,0 +1,63 @@
+.container-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.panel {
+    margin-right: 20px;
+    height: 400px;
+}
+
+.block {
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    top: 200px;
+}
+
+.block:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.hr {
+    height: 3px;
+    background-color: blue;
+}
+
+.mb.card-body {
+    text-align: center;
+}
+
+.mb.btn {
+    border-radius: 0;
+    box-shadow: 0.5px 1px 2px hsla(0, 0%, 20%, 1);
+}
+
+.mb.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 2px 2px 5px hsla(0, 0%, 20%, 1);
+}
+
+.mb.card {
+    border-radius: 0px / 0px;
+    overflow: hidden;
+    box-shadow: 0.5px 1px 2px hsla(0, 0%, 20%, 1);
+}
+
+hr {
+    height: 10px;
+    background-color: #338bdf;
+    border: 0;
+    border-top: 2px solid #338bdf;
+    border-bottom: 2px solid #338bdf;
+    height: 0;
+}

@@ -4,13 +4,13 @@
     <!--Contact heading-->
     <h4 class="h1 m-0">Detalle del Pedido</h4>
     <!--Contact description-->
-    <p class="pb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus veniam.</p>
 
     <div class="row">
 
         <!--Grid column-->
-        <div class="col-sm-5">
+        <div class="col-lg-12">
             <!--Form with header-->
+
             <div class="card border-primary rounded-0">
                 <div class="card-header p-0">
                     <div class="bg-primary text-white text-center py-2">
@@ -21,39 +21,69 @@
                 <div class="card-body p-3">
                     <!--Body-->
                     <div class="form-group">
-
-                        <h6>Usuario: {{pedido.deuser}} </h6>
-
+                        <h5>Informaion del Proveedor</h5>
+                        <h5>Nombre: {{ actividad2[0].nomuser }}</h5>
+                        <h5>Vocacion: {{ actividad2[0].vocacion }}</h5>
+                        status:
+                        <span *ngIf="socketService.socketstatus" class="text-success"> En Linea </span>
+                        <span *ngIf="!socketService.socketstatus" class="text-danger"> Desconectado </span>
                     </div>
                     <hr>
-                    <h5>Tema</h5>
+                    <h5>Actividad</h5>
+                    <h5>Nombre de la Actividad : {{actividad2[0].nombre}}</h5>
+                    <h5>Detalle : {{actividad2[0].descripcion}}</h5>
+                    <h5>Fecha de Publicación : {{ actividad2[0].fecha | date:'shortDate' }}</h5>
+                    <h5>Precio Establecido : {{actividad2[0].precio}} </h5>
                     <!-- <p>{{pedido.descripcion}}</p> -->
                     <br>
                 </div>
+
+                <button *ngIf="role == 'USER'" type="button" class="btn btn-primary mb">Realizar Contratacion</button>
             </div>
             <!--Form with header-->
         </div>
         <!--Grid column-->
 
     </div>
+    <div class="row">
+        <form>
+            <div class="pt-4  form-group col-sm-4">
+                <input name="vocacion" class=" form-control " id="telefono " type="tel " placeholder="Ingrese el Valor" required="required ">
+            </div>
+            <div class="pt-4 form-group col-sm-3 ">
+                <button class="btn btn-primary listar-btn">  
+                    <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>Incertar Cotizacion
+                </button>
+            </div>
+        </form>
+    </div>
 </section>
 
+<hr>
+
+
 <div class="card">
+
     <form [formGroup]="forma" (ngSubmit)="enviarComent()">
+        <h5>Inicia una Conversación</h5>
         <textarea formControlName="comentario" name="comentario" class="form-control" id="comentario" placeholder="Ingrese aqui su comentario"></textarea>
-        <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Adicionar Comentario</button>
+        <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Agrea a tu conversacion</button>
     </form>
 </div>
 
-<h3> Comentarios </h3>
+<h3> Conversaciones </h3>
 
 <div class="card" *ngFor="let commt of comentarioss; index as i">
     <div class="row card-header">
-        <h6>{{commt.user}}</h6>
-        <div>{{commt.fecha}}</div>
+        <div class="col-sm-4">
+            <h6>De: {{commt.user}}</h6>
+        </div>
+        <div class="col-sm-4">
+            <div>Fecha: {{commt.fecha | date:'shortDate'}}</div>
+        </div>
     </div>
     <div class="card-body">
-        <p class="card-text">{{commt.comentario}}</p>
+        <p class="card-text">Conversación: {{commt.comentario}}</p>
         <a class="btn btn-primary"> Responder </a>
     </div>
 </div>

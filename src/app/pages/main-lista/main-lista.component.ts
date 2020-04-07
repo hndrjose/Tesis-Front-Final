@@ -5,7 +5,7 @@ import { DataPerfilService } from '../../services/service.index';
 import { DataUser } from '../../models/data-user.models';
 import { UserService } from '../../services/usuario/user.service';
 import { Usuario } from '../../models/usuarios.models';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router' ;
 
 
 @Component({
@@ -15,7 +15,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MainListaComponent implements OnInit {
 
-termino: any;
+idciudad: number;
+termino: string;
+ciudades: any;
 data: DataUser;
 data1: any;
 user: Usuario;
@@ -28,41 +30,32 @@ vopcion: string;
 vocacion: string;
 vvocacion: string;
 
-  constructor(public dataPservice: DataPerfilService, public usuarioService: UserService, public activatedRoute: ActivatedRoute) {
+  constructor(public dataPservice: DataPerfilService, public usuarioService: UserService, public activatedRoute: ActivatedRoute
+    , public router: Router) {
     this.page = 1;
+    this.termino = this.dataPservice.termino;
+    this.idciudad = parseInt(this.dataPservice.idciudad, 10);
+
     activatedRoute.params.subscribe(
       params => {
-           this.termino = params['termino'];
-           this.cargarparametros(this.termino);
+        let ter = params['termino'];
+        let id = params['idciudad']
+        this.termino = ter;
+        this.idciudad = id;
+        this.guardarStore(ter, id.toString());
+        this.cargarparametros(this.termino, this.idciudad);
+        console.log(this.data);
        });
   }
 
   ngOnInit() {
-
-  //  this.page = 1;
-
-    // this.cargarUser();
-    // console.log(this.user);
-    //  this.cargarparametros();
-
+    this.cargarCiudad();
   }
 
-    cargarparametros(termino: string) {
-      this.limit = 2;
-      this.dataPservice.cargarDataPerfil(termino, this.page).subscribe( ( resp: any ) =>  {
-        this.data = resp;
-        console.log(this.data);
-      });
-
-    }
-    cargarpordireccion(termino: string, forma: NgForm) {
-      // this.limit = 2;
-      // this.dataPservice.paramDataPerfil(termino, forma.value.opcion, this.page).subscribe( ( resp: any ) =>  {
-      //   this.data = resp;
-      //   console.log(this.data);
-      // });
-      console.log(forma.value.opcion);
-    }
+  cargarparametros(termino: string, idciudad: number) {
+    this.limit = 2;
+    this.dataPservice.cargarDataPerfil(termino, idciudad).subscribe(  resp  => this.data = resp );
+  }
 
     capturar( forma: NgForm  ) {
         this.vopcion = this.opcion;
@@ -88,4 +81,24 @@ vvocacion: string;
     }
 
 
+  cargarCiudad() {
+    this.usuarioService.cargarCiudades().subscribe( (resp: any) => this.ciudades = resp );
+    console.log(this.ciudades);
+  }
+
+
+  onSelect(ciudadId) {
+
+    this.guardarStore(this.termino, ciudadId);
+
+    this.router.navigate(['/mainLista', this.termino, ciudadId]);
+    console.log('parametro es ' + this.termino );
+    console.log('ID es ' + ciudadId);
+   // this.dataPservice.cargarDataPerfil(this.termino, ciudadId).subscribe(  resp  => this.data = resp );
+    // console.log(this.data);
+  }
+
+  guardarStore( termino: string, idciudad: string ) {
+    this.dataPservice.guardarStorage(termino,  idciudad);
+  }
 }
