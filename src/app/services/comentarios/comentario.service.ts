@@ -16,6 +16,7 @@ import { Observable } from 'rxjs/Rx';
 import { SubirarchivoService } from '../subirarchivo/subirarchivo.service';
 import { DatosEmail } from '../../models/datos.models';
 import { SocketsService } from '../websocket/sockets.service';
+import { UserService } from '../usuario/user.service';
 
 
 
@@ -24,7 +25,12 @@ import { SocketsService } from '../websocket/sockets.service';
 })
 export class ComentarioService {
 
-  constructor(public http: HttpClient, public router: Router, public socketsService: SocketsService) { }
+  user: Usuario;
+
+  constructor(public http: HttpClient, public router: Router, public socketsService: SocketsService
+    , public usuarioService: UserService) {
+      this.user = this.usuarioService.usuario;
+     }
 
 
   crearComentario( comentario: Comentarios ) {
@@ -56,8 +62,7 @@ export class ComentarioService {
 
   envioMensaje(mensaje: string) {
     const payload = {
-      de: 'Jose',
-      para: 'Caros',
+      de: this.user[0].user,
       menj: mensaje
     };
 
@@ -66,5 +71,9 @@ export class ComentarioService {
 
   getMessage() {
     return this.socketsService.listen('mensaje-nuevo');
+  }
+
+  getMessagePrivate() {
+    return this.socketsService.listen('mensaje-privado');
   }
 }

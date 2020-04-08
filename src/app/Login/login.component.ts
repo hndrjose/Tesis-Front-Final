@@ -3,6 +3,7 @@ import { UserService } from '../services/usuario/user.service';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { Usuario } from '../models/usuarios.models';
 import { Router } from '@angular/router';
+import { SocketsService } from '../services/websocket/sockets.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   recuerdame: boolean = false;
   validar: boolean;
 
-  constructor(public usuarioService: UserService, public router: Router ) { }
+  constructor(public usuarioService: UserService, public router: Router,
+    public socketsService: SocketsService ) { }
 
   ngOnInit() {
     this.email =  localStorage.getItem('email') || '';
@@ -27,10 +29,14 @@ export class LoginComponent implements OnInit {
 
   ingresar( forma: NgForm ) {
     const usuario = new Usuario(forma.value.user, forma.value.password, null);
-    this.usuarioService.LogearUsuario(usuario).subscribe(correto =>  this.router.navigate(['/dasboard']));
-    console.log(forma.value);
 
+    this.socketsService.LoginWs(forma.value.user)
+    .then( () => {
+      this.usuarioService.LogearUsuario(usuario).subscribe(correto =>  this.router.navigate(['/dasboard']));
+    });
   }
+
+
 
 
 }

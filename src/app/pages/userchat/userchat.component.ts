@@ -55,16 +55,14 @@ MsjSubcription: Subscription;
   }
 
   ngOnInit() {
-    this.MsjSubcription = this.comentarioService.getMessage().subscribe( (msg) => {
-      console.log(msg);
-    });
+
     this.forma = new FormGroup({
       comentario: new FormControl( null, Validators.required )
     });
   }
 
   ngOnDestroy() {
-    this.MsjSubcription.unsubscribe();
+   // this.MsjSubcription.unsubscribe();
   }
 
   cargarActividadID(Idactivi: number) {
@@ -100,8 +98,8 @@ MsjSubcription: Subscription;
       this.user,
       this.Hora
     );
-    console.log(comentarios);
-    // this.comentarioService.crearComentario( comentarios ).subscribe();
+    // console.log(comentarios);
+    this.comentarioService.crearComentario( comentarios ).subscribe();
 
     this.comentarioService.envioMensaje(this.forma.value.comentario);
 
